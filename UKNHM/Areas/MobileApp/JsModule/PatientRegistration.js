@@ -58,6 +58,7 @@ $(document).ready(function () {
     });
 });
 
+
 function GetCenter(centreId) {
     sessionStorage.setItem('centreId', '');
     $("#txtCollectionCenter").text('');
@@ -227,7 +228,6 @@ function GetTestMaster() {
             alert('Server Error...!');
         }
     });
-
 }
 function InsertPatient() {
     if (sessionStorage.getItem('centreId') == '') {

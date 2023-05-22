@@ -32,6 +32,7 @@ namespace UKNHMApi.Controllers
 			string result = repositoryDownload.DownloadLISReport(ipProfile);
 			return Request.CreateResponse(HttpStatusCode.OK, result);
 		}
+
 		[HttpPost]
 		[Route("MobileApp_Queries")]
 		public HttpResponseMessage MobileApp_Queries([FromBody] ipMobileApp objBO)

@@ -7,7 +7,7 @@ function PatientReport(logic) {
 	var url = config.baseUrl + "/api/MobileApp/MobileApp_Queries";
 	var objBO = {};
 	objBO.LabCode = '-';
-	objBO.CentreId = sessionStorage.getItem('centreId');
+	objBO.CentreId = sessionStorage.getItem('centreId');//HIStw
 	objBO.VisitNo = $('#txtInput').val();
 	objBO.Prm1 = $('#txtInput').val();
 	objBO.from = $('#txtFrom').val();

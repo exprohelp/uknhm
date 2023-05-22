@@ -1,0 +1,34 @@
+﻿
+@{
+	ViewBag.Title = "RawDataTestWise";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<script src="~/Areas/MIS/JsModule/RawDataTestWise.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Raw Data Test Wise
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>From</label>
+							<input type="date" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-4 form-group">
+							<label>To</label>
+							<div class="flex">
+								<input type="date" id="txtTo" class="form-control" />
+								<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;width:55%" onclick="DownloadExcel()">XL Download</button>
+							</div>							
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,193 @@
+﻿
+@{
+	ViewBag.Title = "UserPasswordChange";
+	Layout = "~/Areas/MobileApp/Views/Shared/_layout.cshtml";
+}
+
+<script src="~/Areas/MobileApp/JsModule/UserPasswordChange.js"></script>
+<style>
+	#ddlPatientList {
+		margin: 10px;
+		width: 94%;
+	}
+
+	body {
+		background-color: #ececec;
+	}
+
+	.report {
+		border-radius: 3px;
+		box-shadow: 1px 0px 4px #e0e0e0;
+		cursor: pointer;
+		border: 1px solid #e6e6e6;
+		background: #fff;
+		padding: 9px 0px;
+		display: flex;
+		width: 94%;
+		margin-bottom: 7px;
+		margin: 10px;
+	}
+
+	table td, th {
+		font-size: 12px !important;
+		padding: 0px 3px;
+	}
+
+	.report-left {
+		border: 1px solid #a9e0ff;
+		margin: 0 10px;
+		width: 90px;
+		background: #ececec;
+		padding: 15px 30px;
+	}
+
+		.report-left .fa {
+			font-size: 31px;
+			color: #3eb1f3;
+		}
+
+	.report-right {
+		width: 75%;
+	}
+
+	.report-title {
+		font-size: 16px;
+		font-weight: 500;
+		color: #000;
+	}
+
+	.report-des {
+		font-size: 13px;
+		color: #999999;
+	}
+
+	.report-btn {
+		width: 65px;
+		padding: 0px 14px;
+		font-size: 13px;
+		border: none;
+		box-shadow: none;
+	}
+
+	.bg {
+		color: #333 !important;
+		background: #e6e6e6 !important;
+	}
+
+	.card {
+		position: relative;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid rgba(0,0,0,.125);
+		border-radius: .25rem;
+	}
+
+	.visitnow {
+		padding: 0px 19px 5px 19px;
+		margin-top: 8px;
+	}
+
+	.card-body {
+		BACKGROUND-COLOR: #d8d5d5;
+		height: 106px;
+		-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
+		min-height: 1px;
+		padding: 1.25rem;
+	}
+
+	.form {
+		background: #fff;
+		padding: 10px 15px;
+		margin: 5px 2px;
+		display: flex;
+	}
+
+	.bn {
+		height: 27px;
+		border-radius: 0px;
+		border: 1px solid #339ff9;
+	}
+
+	.tableFixHead {
+		overflow-y: auto;
+		height: 200px;
+	}
+
+		.tableFixHead thead th {
+			position: sticky;
+			top: 0;
+		}
+
+	th {
+		color: white;
+		background: #339ff9;
+	}
+
+	.info {
+		background: #fff;
+		margin: 4px 6px;
+	}
+
+		.info span {
+			padding: 2px;
+			background: #339ff9;
+			color: #fff;
+			font-size: 12px;
+			display: block;
+		}
+
+	.bg-white {
+		background: #fff !important;
+		color: rgba(0,0,0,.125);
+	}
+
+	.bn1 {
+		border: none;
+		border-radius: 0;
+	}
+
+	button {
+		height: 27px;
+		border: none;
+		font-size: 13px;
+	}
+</style>
+<div id="page-content" style="background: #ececec;">
+	<input type="text" id="hidgetotp" style="display:none" />
+	<div class="info">
+		<div class="col-xs-12">
+			<b>User Id :</b> <span id="txtUserId">XXXXXXX</span>
+		</div>
+		<div class="col-xs-12">
+			<b>Mobile No :</b> <span id="txtMobileNo">XXXXXXXX</span>
+		</div>
+		<div class="col-xs-12">
+			<b>Name :</b><span id="txtUserName">XXXXXXXX</span>
+		</div>
+		<div class="form">
+			<div class="row">
+				<div class="col-xs-12 flex">
+					<button class="btn-primary" onclick="GetOtp()" style="width: 102px;">Get OTP</button>
+					<input type="text" id="txtOTP" class="form-control bn" disabled="disabled" placeholder="Enter 4 Digit OTP" />
+					<button type="button" style="width:48px;margin-left: 2px;"  id="btnGetOTP" class="btn-warning" onclick="verifyOtp()">Verify</button>
+				</div>
+			</div>
+		</div>
+		<div class="form Inactive" style="margin: -15px 2px;" id="divFormBody">
+			<div class="row">
+				<div class="col-xs-12 flex">
+					<button class="btn-primary">Password</button>
+					<input type="text" id="txtPassword" class="form-control bn" placeholder="Enter Password" />
+					<button type="button" style="width:56px;margin-left: 2px;" id="btnChange" onclick="ChangePassword()" class="btn-warning">Change</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

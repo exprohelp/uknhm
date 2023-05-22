@@ -1,0 +1,160 @@
+﻿
+@{
+	ViewBag.Title = "TatReportChandan";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+
+<style>
+	body {
+		font-family: 'Roboto', sans-serif !important;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	#tblTotal th, #tblTotal td {
+		border: none;
+		font-size: 12px;
+		white-space: nowrap;
+		padding: 3px;
+	}
+
+	#tblTotal span {
+		background: #d9edf7;
+		font-size: 12px;
+		padding: 0px 3px;
+		border-radius: 2px;
+		border: 1px solid #cbe7ff;
+		width: 95%;
+		display: inline-block;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			display: block;
+			padding: 10px 5px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 28px;
+		margin: -7px -2px;
+		border: 2px solid #3c3b3b;
+		float: right;
+		color: #585757;
+		padding: 5px 6px;
+		border-radius: 32px;
+		line-height: 13px;
+		height: 28px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+</style>
+
+<script src="~/Areas/MIS/JsModule/TatReportChandan.js?v1.0"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Tat Report Chandan
+				</div>
+				<div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label>District</label>
+                            <select id="ddlDistrict" class="form-control"></select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label>From</label>
+                            <input type="date" id="txtFrom" class="form-control" />
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label>To</label>
+                            <input type="date" id="txtTo" class="form-control" />
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label>Centre</label>
+                            <select id="ddlCentreName" class="form-control"><option>Select</option></select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label>Category</label>
+                            <select id="ddlCategory" onchange="GetTestByCategory()" class="form-control"><option>Select</option></select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label>Test Name</label>
+                            <div class="flex">
+                                <select id="ddlTestName" class="form-control"><option>Select</option></select>
+                                <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;width:20%" onclick="TatReport()"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                        @*<div class="col-md-1 form-group">
+                            <label style="visibility:hidden">Action</label>
+                            <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="TatReport()">Search</button>
+                        </div>*@
+                    </div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblTatReport">
+									<thead>
+										<tr>
+											<th>Test Name</th>
+											<th style="width:13%">Reg. DateTime</th>
+											<th style="width:13%">Dispatch DateTime</th>
+											<th style="width:13%">Target DateTime</th>
+											<th style="width:14%">Report Approved Date</th>
+											<th>Tat(Hrs)</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

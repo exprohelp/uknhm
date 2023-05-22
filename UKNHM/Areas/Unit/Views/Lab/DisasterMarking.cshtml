@@ -1,0 +1,184 @@
+﻿
+@{
+	ViewBag.Title = "DisasterMarking";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<script src="~/Areas/Unit/JsModule/DisasterMarking.js"></script>
+<style>
+	.bg-danger {
+		background-color: #ffbebe;
+	}
+
+	#patientInfo .select2-container .select2-selection--single {
+		box-sizing: border-box;
+		cursor: pointer;
+		display: block;
+		height: 23px;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	#tblPatientInfo .form-control {
+		height: 22px;
+	}
+
+	.IsCancel {
+		background: #ff9090;
+	}
+
+	.newTest {
+		background: #d6efd7;
+	}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Disaster Marking
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>From</label>
+							<input type="datetime-local" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>To</label>
+							<input type="datetime-local" id="txtTo" class="form-control" />
+						</div>
+						<div class="col-md-4 form-group">
+							<label>Centre Name</label>
+							<div class="flex">
+								<select id="ddlCentreName" class="form-control"></select>
+								<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 6px;" onclick="GetTestForDisasterMarking()">Get</button>
+							</div>
+						</div>
+						<div class="col-md-4 form-group" style="width:26%">
+							<label>Remark</label>
+							<div class="flex">
+								<select id="ddlCalamityType" class="form-control">
+									<option>Select Remark</option>
+									<option>Heavy Rain</option>
+									<option>Snow Fall</option>
+									<option>Road Block</option>
+								</select>
+								<button class="btn-flat btn-primary" id="btnRemark" style="background:#337ab7;padding: 4px 5px;" onclick="DisasterRemark()">Submit</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:420px">
+								<table class="table table-bordered" id="tblPatientRegister">
+									<thead>
+										<tr>
+											<th style="width: 3%;">Visit No</th>
+											<th style="width: 2%;">Barcode No</th>
+											<th style="width: 3%;">Visit Date</th>
+											<th style="width: 4%;">Patient Name</th>
+											<th style="width: 10%;"><input type="text" id="txtCalamityRemark" placeholder="Remark.." style="width: 90%;" /></th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modalPatientInfo" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg" style="width: 1100px;">
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top:4%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="btnPresc"></div>
+			</div>
+			<div class="modal-body" style="padding: 12px 30px;">
+				<div class="row">
+					<div class="col-md-6 form-group" style="overflow:auto;height:485px">
+						<img src="" id="imgPresc" style="width:100%;" />
+					</div>
+					<div class="col-md-6 form-group">
+						<div class="panel panel-primary">
+							<div class="panel-heading" style="height: 29px;">
+								patient Info
+							</div>
+							<div class="panel-body" style="height:465px">
+								<div class="col-md-12 form-group">
+									<table class="table table-bordered" id="patientInfo">
+										<tr>
+											<th style="width:19%">Visit No</th>
+											<th style="width:3%">:</th>
+											<td id="txtVisitNo" colspan="4"></td>
+										</tr>
+										<tr>
+											<th style="width:19%">Name Of Unit</th>
+											<th style="width:3%">:</th>
+											<td id="txtUnitName" colspan="4"></td>
+										</tr>
+										<tr>
+											<th style="width:19%">Patient Name</th>
+											<th style="width:3%">:</th>
+											<td style="width:40%"><input type="text" style="width:100%" id="txtPatientName" /></td>
+
+											<th style="width:11%">Gender</th>
+											<th style="width:3%">:</th>
+											<td style="width:40%"><select id="ddlGender" style="width:100%" class="form-control"><option>Male</option><option>Female</option></select></td>
+										</tr>
+										<tr>
+											<th style="width:19%">Mobile No</th>
+											<th style="width:3%">:</th>
+											<td style="width:40%" id="txtMobileNo"></td>
+
+											<th style="width:11%">Age</th>
+											<th style="width:3%">:</th>
+											<td style="width:40%;display:flex"><input type="text" id="txtAge" /><select id="ddlAgeType" class="form-control"><option>Year</option><option>Month</option></select></td>
+										</tr>
+										<tr>
+											<th style="width:27%">Prescribed By</th>
+											<th style="width:3%">:</th>
+											<td colspan="4"><select id="ddlDoctor" class="form-control"></select></td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-md-8 form-group">
+									<label>Test Name</label>
+									<select id="ddlTestName" class="form-control"></select>
+								</div>
+								<div class="col-md-4 form-group">
+									<label>Amount</label>
+									<div class="flex">
+										<input type="text" id="txtTestAmount" disabled="disabled" placeholder="0" class="form-control bn text-right" style="border-color:#337ab7;border-radius:0" />
+										<button class="btn-flat btn-success" id="AddNewTest" style="background:#337ab7;padding: 4px;width:33%">Add</button>
+									</div>
+								</div>
+								<div class="col-md-12 form-group">
+									<div class="scroll" style="height: 195px;">
+										<table class="table table-bordered" id="tblPatientInfo">
+											<thead>
+												<tr>
+													<th style="width: 1%;"><input type='checkbox' /></th>
+													<th>Investigation Name</th>
+													<th style="width: 10%;text-align:right">Amount</th>
+													<th><input type="text" class="form-control" /></th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

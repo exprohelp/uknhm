@@ -1,0 +1,226 @@
+﻿
+@{
+    ViewBag.Title = "CampaignMaster";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+    #txtCampaignInfo {
+        background: #ddd;
+        width: 100%;
+        padding: 5px;
+    }
+
+    table td, th {
+        font-size: 12px !important;
+        padding: 0px 3px;
+    }
+
+    .bn {
+        border-radius: 0px;
+        border: 1px solid #339ff9;
+    }
+
+    .tableFixHead {
+        overflow-y: auto;
+        height: 200px;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    th {
+        color: white;
+        background: #339ff9;
+    }
+
+    .master-title {
+        background: #ffdfdf;
+        padding: 1px 7px;
+    }
+
+    .list-title {
+        width: 100%;
+        padding: 1px 10px;
+        color: #bf7070;
+        display: block;
+        background: antiquewhite;
+    }
+    /*Panel*/
+    .panel-group .panel {
+        border-radius: 0;
+        box-shadow: none;
+        border-color: #f3eeee;
+    }
+
+    .panel-default > .panel-heading {
+        padding: 0px !important;
+        border-radius: 0;
+        color: #212121;
+        background-color: #fff;
+        border-color: #EEEEEE;
+    }
+
+    div.title-total {
+        font-size: 11px;
+        margin: 2px;
+        border: 1px solid #adc8f3;
+        padding: 5px;
+        border-radius: 4px;
+        background: #d9edf7;
+        color: #484848;
+        font-weight: 600;
+        display: inline;
+    }
+
+    .panel-title {
+        font-size: 13px;
+    }
+
+        .panel-title > a {
+            width: 90%;
+            display: block;
+            padding: 10px 2px;
+            text-decoration: none;
+        }
+
+    .more-less {
+        width: 25px;
+        margin: -7px 1px;
+        border: 2px solid #e6e4e4;
+        float: left;
+        color: #33abb7;
+        padding: 5px 4px;
+        border-radius: 40px;
+        line-height: 10px;
+        height: 25px;
+    }
+
+    .assign {
+        cursor: pointer;
+        margin: -31px 5px;
+        float: right;
+        color: #ffffff !important;
+        padding: 5px;
+    }
+
+    .total-panel {
+        float: right;
+        margin-right: 10px;
+    }
+
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+        border-top-color: #EEEEEE;
+    }
+
+    .panel-info {
+        border-color: #ffecd2;
+    }
+</style>
+<script src="~/Areas/MIS/JsModule/CampaignMaster.js?v1.2"></script>
+<div class="page-box" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Campaign Master
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-7 form-group">
+                                <label>Centre Name</label>
+                                <select id="ddlCentreName" class="form-control"></select>
+                            </div>
+                            <div class="col-md-5 form-group">
+                                <label>Campaign Type</label>
+                                <div class="flex">
+                                    <select id="ddlCampaignType" class="form-control">
+                                        <option>Select</option>
+                                        <option>Mobile Specific</option>
+                                        <option>Without Mobile</option>
+                                    </select>
+                                    <button class="btn-flat btn-success" id="btnSave" style="width:33%;background:#45bb13;padding: 4px 5px;margin-left:10px" onclick="InsertCampaignMaster()"><i class="fa fa-sign-in">&nbsp;</i>Save</button>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Campaign Date</label>
+                                <input type="date" id="txtCampaignDate" class="form-control" />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Expire Date</label>
+                                <input type="date" id="txtExpireDate" class="form-control" />
+                            </div>
+                            <div class="col-md-4 form-group">
+                                <label>Upload File </label>
+                                <input type="file" id="FileUpload" style="width: 100%;" />
+                            </div>
+                            <div class="col-md-12">
+                                <label>Description <span class="mendat">*</span></label>
+                                <textarea id="txtDescription" class="form-control" placeholder="Description"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="scroll" style="margin-top:10px;min-height:340px">
+                                    <table class="table table-bordered" id="tblCampaignMaster">
+                                        <thead>
+                                            <tr>
+                                                <th>IsActive</th>
+                                                <th>Campaign Id</th>
+                                                <th>Description</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Campaign Type</th>
+                                                <th style="width:1%">CMD</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Campaign Info
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label id="txtCampaignInfo"></label>
+                            <div class="col-md-12 form-group">
+                                <label>Mobile No</label>
+                                <div class="flex">
+                                    <input type="text" id="txtMobileNo" class="form-control" placeholder="Mobile No" />
+                                    <button class="btn-flat btn-success" id="btnSave" style="width:25%;background:#45bb13;padding: 4px 5px;margin-left:10px" onclick="InsertCampaignInfo()"><i class="fa fa-sign-in">&nbsp;</i>Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="scroll" style="margin-top:10px;min-height:340px">
+                                <table class="table table-bordered" id="tblCampaignInfo">
+                                    <thead>
+                                        <tr>
+                                            <th>Campaign Id</th>
+                                            <th>Mobile No</th>
+                                            <th style="width:1%">CMD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

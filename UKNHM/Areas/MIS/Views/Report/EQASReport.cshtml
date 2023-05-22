@@ -1,0 +1,261 @@
+﻿
+@{
+	ViewBag.Title = "EQASReport";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+    .barcodeNo {
+        border: 1px solid #ddd;
+        width: 100%;
+        background: #ffefc0;
+        padding: 4px 6px;
+        text-align: left;
+    }
+    .uploadFile {
+        margin-left: 3%;
+        background: #e38f11;
+        color: #fff;
+        padding: 3px 5px;
+        font-size: 12px;
+    }
+    .btnAwaited {
+        background: #cd0505;
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: crosshair !important;
+    }
+    .btnNavigation {
+        padding: 4px 7px;
+        width: 24%;
+        font-size: 12px;
+        margin-left: 2px;
+    }
+    tr.Approved td{
+        background: #b9e5a7 !important;
+    }
+	#tblEQASReport tbody td:nth-last-child(1), #tblEQASReport tbody td:nth-last-child(2), #tblEQASReport tbody td:nth-last-child(3), #tblEQASReport tbody td:nth-last-child(4) {
+		background: #e8f4fb;
+	}
+
+	.btn-report {
+		text-decoration: none !important;
+		border: none;
+		padding: 3px 5px;
+		background-color: #2492b3;
+		border-color: #2492b3;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	body {
+		font-family: 'Roboto', sans-serif !important;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	#tblTotal th, #tblTotal td {
+		border: none;
+		font-size: 12px;
+		white-space: nowrap;
+		padding: 3px;
+	}
+
+	#tblTotal span {
+		background: #d9edf7;
+		font-size: 12px;
+		padding: 0px 3px;
+		border-radius: 2px;
+		border: 1px solid #cbe7ff;
+		width: 95%;
+		display: inline-block;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			display: block;
+			padding: 10px 5px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 28px;
+		margin: -7px -2px;
+		border: 2px solid #3c3b3b;
+		float: right;
+		color: #585757;
+		padding: 5px 6px;
+		border-radius: 32px;
+		line-height: 13px;
+		height: 28px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+
+	#lblTotalTest {
+		float: right;
+		background: #ddd;
+		padding: 1px 5px;
+		border-radius: 2px;
+	}
+</style>
+<script src="~/Areas/MIS/JsModule/EQASReport.js?1.8"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					EQAS Report
+					<label style="background:#ddd" id="lblTotalTest">Total Test Count :0</label>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-2 form-group">
+							<label>Region</label>
+							<select id="ddlRegion" class="form-control">
+								<option>Garhwal</option>
+								<option>Kumaon</option>
+							</select>
+						</div>
+						<div class="col-md-2 form-group">
+							<label>District</label>
+							<select id="ddlDistrict" class="form-control"></select>
+						</div>
+						<div class="col-md-2 form-group">
+							<label>From</label>
+							<input type="date" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-2 form-group">
+							<label>To</label>
+							<input type="date" id="txtTo" class="form-control" />
+						</div>
+						<div class="col-md-4 form-group">
+							<label>Observation 
+                            <button id="btnUnUploaded" class="btn btn-warning btn-xs" onclick="EQASReport('EQASReport-NotUploaded')">Not Uploaded </button>
+                            <button id="btnDownloadExcel" disabled="" class="btn btn-danger btn-xs" onclick="DownloadEQASReport('DownloadVisitWiseReport')"><i class="fa fa-file-excel-o">&nbsp;</i>Download Visit Report </button>
+                            </label>
+							<div class="flex">
+								<div style="width:200px">
+									<select id="ddlObservationId" class="form-control"></select>
+								</div>
+								<button class="btn-flat btn-primary btnNavigation" id="btnSave" onclick="EQASReport('EQASReport')">Get</button>
+								<button class="btn-flat btn-warning btnNavigation" id="btnPrint" onclick="PrintPDF()">Print</button>
+								<button class="btn-flat btn-success btnNavigation" id="btnPrint" onclick="ApproveEQASInfo()">Approve</button>
+							</div>
+						</div>
+						<div class="col-md-12 form-group" style="background: #ffe6e6;padding:0 5px;font-size:12px;margin: 0;">
+							<div class="row">
+								<div class="col-md-6">
+									<p class="text-danger"><b>Note 1 : </b><span class="text-left">Variation in Results may oocur due to different equipment, different reagent, difference in testing  methodology  and sample integrity</span></p>
+								</div>
+								<div class="col-md-6">
+									<p class="text-danger"><b>Note 2 : </b><span class="text-left">Unit of Results also vary due to change in equipment, method therefore it has been made uniform to get both lab results in same unit</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblEQASReport">
+									<thead>
+										<tr>
+											<th style="width:30%">Observation Name</th>
+											<th style="width:10%;text-align:center" colspan="3">Chandan</th>
+											<th style="width:10%;text-align:center" colspan="5">EQAS</th>
+										</tr>
+										<tr> 
+											<th style="width:30%">Observation Name</th>
+											<th style="width:6%">Reading</th>
+											<th style="width: 7%;">Unit</th>
+											<th style="width: 10%;">Ref-Range</th>
+											<th style="width: 15%;">Lab Name</th>
+											<th style="width: 5%;">Reading</th>
+											<th style="width: 7%;">Unit</th>
+											<th style="width: 10%;">Ref. Range</th>
+											<th style="width: 8%;">Status</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modalUploadReport" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-top:4%;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="padding: 12px 30px;">
+                <div class="row">
+                    <div class="col-md-12 form-group">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                              Upload Report
+                            </div>
+                            <div class="panel-body" style="height: auto;">
+                                <div class="row">
+                                    <div class="col-md-12 form-group">
+                                        <label class="barcodeNo"></label>
+                                        <input type="file" id="FileUpload" class="form-control" />
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                       <button id="btnUploading" class="btn btn-warning btn-xs" onclick="UploadReport()"><i class="fa fa-upload">&nbsp;</i>Upload File</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

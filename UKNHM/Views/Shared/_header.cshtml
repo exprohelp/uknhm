@@ -1,0 +1,162 @@
+﻿<style>
+	.commission {
+		cursor: pointer;
+		color: #24666d;
+		width: 31%;
+		float: right;
+		margin: 2px 5px;
+		font-size: 13px;
+		background: #d9edf7;
+		text-decoration: none;
+		padding: 14px 9px;
+		border-radius: 1px;
+		box-shadow: 1px 1px 2px #bfc1c0;
+	} 
+		.commission:hover {
+			box-shadow: 2px 2px 3px #bfc1c0;
+			background: #b7def1;
+			text-decoration: none;
+			transition: box-shadow linear 0.2s;
+		}
+</style>
+<div class="header">
+	<div class="row" style="background:#ffffffed;border-top:10px solid #1c82d7;">
+		<div class="col-md-8 left-panel">
+			<h3 class="text-danger">
+				<img src="~/Content/img/NHM_Chandan.png" style="width:147px;margin-left: 27px;" />			
+				@*<a class="commission" href="~/MIS/Report/Dashboard2">					
+				Dashboard : 15th Finance Commission
+				</a>*@
+			</h3>
+		</div>
+		<div class="col-md-4 right-panel">
+			<a href="~/mis/report/dashboard"><i class="fa fa-home"></i></a>
+			<span class="pull-right login-area">			
+				<img src="~/Content/img/user-icon.png" style="width:28px;border-radius: 2px;" /><user></user>
+				<logout><i class="fa fa-power-off"></i></logout>
+			</span>
+		</div>
+		<img src="~/Content/img/loading.gif" class="img-responsive" style="width:100% !important;height: 3px;position:absolute;top:10.5%" id="LineLoader" />
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		IsLogin();
+		$('select').select2();
+		$('.fa-bars').on('click', function () {
+			$('.menu-section').toggle("slide", function () {
+				$('.toggle-bars').show()
+				$('#layout-section').toggleClass('col-md-9');
+			});
+		});
+		$('logout').on('click', function () {
+			if (confirm('Are you sure to Logout?')) {
+				sessionStorage.clear();
+				localStorage.clear();
+				window.location.href = config.rootUrl;
+			}
+		});
+	});
+	function IsLogin() {
+		var url = [];
+		var IsLogin = sessionStorage.getItem('IsLogin');
+		var urlOrigin = window.location.origin.toLowerCase();
+		var siteUrl = config.rootUrl;
+		if (!IsLogin)
+			window.location.href = config.rootUrl;
+	}
+</script>
+
+<div id="modalProfile" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-md">
+
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top:13%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title" style="display: flex;">
+					Update Profile&nbsp;
+					@*<span class="btn-flat btn-default btn" data-toggle="modal" data-target="#modalUpload" data-dismiss="modal">Update Document</span>*@
+				</h4>
+			</div>
+			<div class="modal-body" style="padding: 12px 30px;">
+				<div class="row">
+					<div class="col-md-6 form-group">
+						<label>Name</label>
+						<input type="text" id="txtProfName" readonly="" class="form-control" placeholder="Name" />
+						<input type="text" id="txtProfUserId" style="display:none" />
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Mobile</label>
+						<input type="text" id="txtProfMobile" readonly="" data-int maxlength="12" class="form-control" placeholder="Mobile" />
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Email Id</label>
+						<input type="text" id="txtProfEmail" class="form-control" placeholder="Mobile" />
+					</div>
+					<div class="col-md-6 form-group">
+						<label>AadharNo</label>
+						<input type="text" id="txtProfAadharNo" data-int maxlength="12" class="form-control" placeholder="Aadhar No" />
+					</div>
+					<div class="col-md-6 form-group">
+						<label>PanNo</label>
+						<input type="text" id="txtProfPanNo" readonly="" class="form-control" placeholder="Pan No" />
+					</div>
+					<div class="col-md-6 form-group">
+						<label>Password</label>
+						<input type="text" id="txtProfPassword" class="form-control" placeholder="Password" />
+					</div>
+					<div class="col-md-12 form-group">
+						<label>Address</label>
+						<div class="flex">
+							<input type="text" id="txtProfAddress" readonly="" class="form-control" placeholder="Address" />
+							<button class="btn-flat btn-success" style="width: 16%;margin-left: 8px;" onclick="UpdateProfile()"><i class="fa fa-sign-in">&nbsp;</i>Update</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@*<div id="modalUpload" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content" style="margin-top: 25%;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="display: flex;">Upload Document&nbsp;-&nbsp;<span id="UserId"></span></h4>
+				</div>
+				<div class="modal-body" style="padding: 12px 30px;">
+					<div class="row">
+						<div class="col-md-5 form-group">
+							<select class="form-control" id="ddlDocType">
+								<option>Document Type</option>
+								<option>Photo</option>
+								<option>Pan</option>
+								<option>Aadhar</option>
+							</select>
+						</div>
+						<div class="col-md-7 form-group flex">
+							<input type="file" id="FileUpload" onchange="IsValid(this)" class="form-control" />
+							<button class="btn-flat btn-primary" onclick="UpdateUserDoc()" id="btnAdd" style="background:#0ca526;padding: 4px 10px;margin-left: 3px;">Upload</button>
+						</div>
+						<div class="col-md-12 form-group">
+							<div class="row">
+								<div class="col-md-4">
+									<img src="#" style="width: 100%;height: 221px;" id="DocPhoto" />
+									<span class="doc-title">Photo</span>
+								</div>
+								<div class="col-md-4">
+									<img src="#" style="width: 100%;height: 221px;" id="DocPan" />
+									<span class="doc-title">Pan Card</span>
+								</div>
+								<div class="col-md-4">
+									<img src="#" style="width: 100%;height: 221px;" id="DocAadhar" />
+									<span class="doc-title">Aadhar</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>*@

@@ -1,0 +1,83 @@
+﻿
+@{
+	ViewBag.Title = "SampleReadingLog";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/MIS/JsModule/SampleReadingLog.js"></script>
+<style>
+	.UploadSection {
+		background: url(/Content/img/upload.png) no-repeat center;
+		height: 260px;
+		margin-top: 45px;
+	}
+
+	#btnFileUpload {
+		margin: 142px 0 56px 225px;
+	}
+
+	.bg-danger {
+		background-color: #ffbebe;
+	}
+
+	#patientInfo .select2-container .select2-selection--single {
+		box-sizing: border-box;
+		cursor: pointer;
+		display: block;
+		height: 23px;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	#tblPatientInfo .form-control {
+		height: 22px;
+	}
+
+	.IsCancel {
+		background: #ff9090;
+	}
+
+	.newTest {
+		background: #d6efd7;
+	}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Sample Reading Log
+				</div>
+				<div class="panel-body">
+					<div class="row">					
+						<div class="col-md-4 form-group">
+							<label>Barcode No.</label>
+							<div class="flex">
+								<input type="text" id="txtBarcodeNo" placeholder="Enter Barcode No." class="form-control bn" style="border-color:#337ab7;border-radius:0" />
+								<button class="btn-flat btn-success" id="btnSave" style="background:#337ab7;padding: 4px;width:33%" onclick="SampleReadingLog()">Get</button>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:420px">
+								<table class="table table-bordered" id="tblSampleReading">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>VALUE</th>
+											<th>Old Value</th>
+											<th>Result DateTime</th>
+											<th>Result Enterd By Name</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

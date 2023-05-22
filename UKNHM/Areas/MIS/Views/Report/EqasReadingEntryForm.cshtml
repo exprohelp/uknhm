@@ -1,0 +1,228 @@
+﻿
+@{
+    ViewBag.Title = "EqasReadingEntryForm";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+    select.form-control1 {
+        height: 24px;
+    }
+
+    .range-unit {
+        position: relative;
+        margin-top: -24px;
+        height: 24px;
+        border-radius: 0;
+    }
+
+    #tblEQASReport tbody td:nth-last-child(1), #tblEQASReport tbody td:nth-last-child(2), #tblEQASReport tbody td:nth-last-child(3), #tblEQASReport tbody td:nth-last-child(4), #tblEQASReport tbody td:nth-last-child(5), #tblEQASReport tbody td:nth-last-child(6) {
+        background: #e8f4fb;
+    }
+
+    .btn-report {
+        text-decoration: none !important;
+        border: none;
+        padding: 3px 5px;
+        background-color: #2492b3;
+        border-color: #2492b3;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    #txtSearch {
+        width: 98%;
+        height: 19px;
+        font-size: 11px;
+        padding: 5px;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif !important;
+    }
+
+    table {
+        margin: 10px 0;
+    }
+
+    #tblPaymentInfo td, #tblPaymentInfo th {
+        font-size: 13px;
+    }
+
+    #tblChandanInfo tbody td:nth-last-child(1), #tblChandanInfo tbody td:nth-last-child(2), #tblChandanInfo tbody td:nth-last-child(3), #tblChandanInfo tbody td:nth-last-child(4) {
+        background: #ffefb6;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 4px 10px;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: none;
+    }
+</style>
+<script src="~/Areas/MIS/JsModule/EqasReadingEntryForm.js?1.1"></script>
+<div class="page-box" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    EQAS Reading Entry Form
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 form-group flex" style="align-items: center;">
+                            @*<label style="width: 45%;">Barcode No</label>*@
+                            <input type="text" id="txtVisitNo" style="border-radius:0;border-color:#f0ad4e" autocomplete="off" placeholder="Barcode No." class="form-control" />
+                            <button class="btn-flat btn-warning" id="btnGet" style="padding: 4px 20px;width: 35%;height: 30px;" onclick="GetInfo()"><i class="fa fa-sign-in">&nbsp;</i>Get</button>
+                        </div>
+                        <div class="col-md-2 form-group flex" style="align-items: center;">
+                            <button class="btn-flat btn-warning" id="btnFeededList" style="padding: 4px 20px;height: 30px;">View Existing</button>
+                        </div>
+                        <div class="col-md-4 form-group flex" style="align-items: center;">
+                            <label style="width:10%;">Lab</label>
+                            <select id="ddlOutLab" class="form-control" style="border-radius:0;border-color:#f0ad4e">
+                                <option>Select</option>
+                                <option>Doon Medical College</option>
+                                <option>Sushila Tiwari Hospital Haldwani</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <div class="scroll" style="background:#ebebeb;border: 1px solid #d7d7d7;">
+                                <table class="table" id="tblPaymentInfo">
+                                    <tr>
+                                        <th>Visit No</th>
+                                        <th>:</th>
+                                        <td id="txtInvoiceNo">XXXXXXXXXXXXXXXX</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Barcode No</th>
+                                        <th>:</th>
+                                        <td id="txtBarcodeNo">XXXXXXXXXXXXXXXX</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Patient Name</th>
+                                        <th>:</th>
+                                        <td id="txtPatientName">XXXXXXXXXXXXXXXX</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Age/Gender</th>
+                                        <th>:</th>
+                                        <td id="txtAgeGender">XXXXXXXXXXXXXXXX</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Reg Date</th>
+                                        <th>:</th>
+                                        <td id="txtRegDate">XXXXXXXXXXXXXXXX</td>
+                                    </tr>
+                                </table>
+                                <p class="text-center">
+                                    <button class="btn-flat btn-success" id="btnGetReport" style="padding: 4px 10px;height: 30px" onclick="DownloadReport('192.168.0.21')"><i class="fa fa-sign-in">&nbsp;</i>Get Report Locally</button>
+                                    <button class="btn-flat btn-success" id="btnGetReport" style="padding: 4px 10px;height: 30px" onclick="DownloadReport('chandan.online')"><i class="fa fa-sign-in">&nbsp;</i>Get Report Cloud</button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8 form-group">
+                            <div class="scroll" style="height:204px;border: 1px solid #2492b3;">
+                                <table class="table table-bordered" id="tblInfo" style="margin: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th>Observation Id</th>
+                                            <th><input type="text" id="txtSearch" class="form-control" placeholder="Search Observation Name" /></th>
+                                            <th class="text-right">Reading</th>
+                                            <th>Ref. Range</th>
+                                            <th>Unit</th>
+                                            <th style="width:1%">CMD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="scroll" style="height: 225px;border: 1px solid #2492b3;">
+                                <table class="table table-bordered" id="tblChandanInfo" style="margin: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:30%">Observation Name</th>
+                                            <th style="width:10%">Chandan-Reading</th>
+                                            <th style="width:10%">Chandan-Unit</th>
+                                            <th style="width:10%">EQAS Lab Reading</th>
+                                            <th style="width:10%">EQAS Lab Unit</th>
+                                            <th style="width:20%">EQAS Lab Ref. Range</th>
+                                            <th style="width:20%">Status</th>
+                                            <th style="width:1%">CMD</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 form-group flex" style="align-items: center;">
+                            <label style="width:40%;">Upload Report</label>
+                            <input type="file" id="FileUpload" class="form-control" />
+                        </div>
+                        <div class="col-md-4 form-group flex" style="align-items: center;">
+                            <label>
+                                <input type="checkbox" id="IsAwaited" />&nbsp;Is Awaited
+                            </label>
+                            <button class="btn-flat btn-warning" id="btnSave" style="padding: 4px 20px;height: 30px;margin-left: 10px;" onclick="InsertEQASInfo()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalViewExisting" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" style="width: 1245px;">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-top:0%;height:595px">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="btnPresc"></div>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12 form-group">
+                    <div class="scroll" style="min-height:500px">
+                        <table class="table table-bordered" id="tblEQASReport">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%">Observation Name</th>
+                                    <th style="width:10%;text-align:center" colspan="3">Chandan</th>
+                                    <th style="width:10%;text-align:center" colspan="6">EQAS<button class="btn btn-danger btn-xs pull-right" onclick="DeleteAllEQASInfo()"><i class="fa fa-trash">&nbsp;</i>Delete All</button></th>
+                                </tr>
+                                <tr>
+                                    <th style="width:30%">Observation Name</th>
+                                    <th style="width:6%">Reading</th>
+                                    <th style="width: 7%;">Unit</th>
+                                    <th style="width: 10%;">Ref-Range</th>
+                                    <th style="width: 15%;">Lab Name</th>
+                                    <th style="width: 5%;">Reading</th>
+                                    <th style="width: 7%;">Unit</th>
+                                    <th style="width: 10%;">Ref. Range</th>
+                                    <th style="width: 8%;">Status</th>
+                                    <th style="width: 1%;">CMD</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="UploadAwaitedReport" style="display:none;">
+                    <div class="col-md-4 form-group flex" style="align-items: center;">
+                        <label style="width:40%;">Upload Report</label>
+                        <input type="file" id="AwaitedFileUpload" class="form-control" />
+                    </div>
+                    <div class="col-md-4 form-group flex" style="align-items: center;">
+                        <button class="btn-flat btn-warning" id="btnUpdateAwaitedReport" style="padding: 4px 20px;height: 30px;margin-left: 10px;" onclick="UpdateAwaitedReportPath()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

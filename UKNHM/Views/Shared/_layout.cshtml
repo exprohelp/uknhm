@@ -1,0 +1,371 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Welcome To Chandan Hospital</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="~/Content/css/custom.css?v1.0" rel="stylesheet" />
+	<script src="~/JsModule/global.js"></script>
+	<script src="~/JsModule/Authentication.js"></script>
+	<link href="~/Content/css/select2.css" rel="stylesheet" />
+	<script src="~/Content/js/select2.js"></script>
+	<script src="~/JsModule/file-saver.js"></script>
+	<script src="~/JsModule/moment.js"></script>
+
+	<style>
+        .panel-primary {
+            height: 550px;
+            overflow: auto;
+            border-color: #337ab7;
+        }
+		table thead th {
+			white-space: nowrap;
+			background: #2492b3 !important;
+			color: #fff !important;
+			padding: 6px !important;
+		}
+
+		.table-custom tbody td {
+			padding: 3px !important;
+		}
+
+		table {
+			overflow-y: auto;
+		}
+
+			table thead th {
+				z-index: 100;
+				position: sticky;
+				top: -2px;
+			}
+
+		#layout-section h2.page-heading {
+			font-size: 22px;
+			margin: 10px 0;
+			color: #444;
+		}
+
+		/*.panel-body {
+            height:80vh;
+			padding: 8px;
+		}*/
+
+		#layout-section {
+			background: #f3f3f3;
+			padding: 0px 10px;
+			border-top: 2px solid #ec1100;
+			margin: 5px 0px 0 12px;
+			height: 570px;
+		}
+
+        .menu-section {
+            position: fixed;
+            background: #f3f3f3;
+            padding: 0;
+            border-top: 2px solid #ec1100;
+            margin: 5px 0;
+            width: 20.5%;
+            height: 100vh;
+            left: 0;
+        }
+
+			.menu-section h3 {
+				color: #01447b;
+				text-align: center;
+				margin: 0;
+			}
+
+            .menu-section ul {
+                height: 85vh;
+                padding: 0;
+                list-style: none;
+                overflow: auto;
+                overflow-y: auto;
+            }
+
+                .menu-section ul li {
+                    cursor: pointer;
+                    height: 75px;
+                    width: 45%;
+                    background: #0473a9;
+                    color: #fff;
+                    /* line-height: 4vh; */
+                    margin: 5px 5px;
+                    display: inline-block;
+                }
+
+					.menu-section ul li:hover {
+						background: #5f6b71;
+						box-shadow: none;
+					}
+
+					.menu-section ul li a {
+						width: -webkit-fill-available;
+						padding: 16px 22px;
+						text-align: center;
+						display: inline-grid;
+						color: #fff;
+						text-decoration: none;
+						font-weight: 600;
+						font-size: 13px;
+					}
+
+			.menu-section .fa-bars {
+				color: #e31843;
+				cursor: pointer;
+				right: 16px;
+				position: absolute;
+				top: 4px;
+			}
+
+		.toggle-bars {
+			color: #e31843;
+			cursor: pointer;
+			background: #fff;
+			padding: 5px;
+			font-size: 21px;
+			top: 6px;
+			position: absolute;
+			left: 0px;
+			display: none;
+		}
+
+		body {
+			background: #fff;
+			overflow-x: hidden;
+		}
+
+		.header h3 {
+			font-size: 19px;
+			color: #e91e63;
+			margin: 2px;
+			font-weight: 600;
+		}
+
+		.login {
+			box-shadow: 2px 2px 11px #636363;
+			margin: 10% 0 0 0;
+			background: #ffffffc4;
+			padding: 20px;
+		}
+
+		.login-heading {
+			padding: 0px;
+			font-family: sans-serif;
+			font-weight: bold;
+			color: #2347ad;
+			text-align: center;
+			margin: 0px 0px 11px 0px;
+		}
+
+		.btn-flat {
+			border: none;
+			border-radius: 1px;
+		}
+
+		.left-panel {
+			border-right: 1px solid #fff;
+		}
+
+		.right-panel {
+			font-size: 19px;
+			color: #01447b;
+			padding: 0;
+			align-content: center;
+			display: flex;
+		}
+
+		.about {
+			background: #fff;
+			padding: 15px;
+			text-align: left;
+			margin: 10px 0px 10px 0px;
+		}
+
+		.banner {
+			background: #fff;
+			padding: 3px;
+			text-align: left;
+			margin: 10px 0px;
+		}
+
+		.panels {
+			background: #fff;
+			padding: 1px 0;
+			text-align: left;
+			margin: 12px 0 0px 0px;
+		}
+
+		.heading {
+			color: #005498;
+			text-align: center;
+			font-size: 22px;
+			text-transform: uppercase;
+			font-weight: 600;
+			text-shadow: 0px 3px 10px #ffa302;
+		}
+
+		a.login-btn {
+			display: block;
+			border-radius: 2px;
+			background: #00447b;
+			color: #fff;
+			padding: 0px 0px;
+			margin: 8px 9px;
+			text-align: center;
+			cursor: pointer;
+			text-decoration: none;
+		}
+
+			a.login-btn:hover {
+				background: #e91e63;
+				padding-left: 10px;
+				box-shadow: 5px 3px 7px #585555;
+			}
+
+		hr {
+			margin: 0;
+		}
+
+		.footer-heading {
+			font-size: 21px;
+			margin: 0;
+			color: #e91e63;
+			font-weight: 600;
+		}
+
+		ul.btn-list {
+			line-height: 49px;
+			padding: 0;
+			list-style: none;
+		}
+
+		.services-list {
+			margin: 0;
+			padding: 0;
+		}
+
+			.services-list li:hover {
+				background: #e91e63;
+				padding-left: 10px;
+				box-shadow: 5px 3px 7px #585555;
+			}
+
+			.services-list li {
+				/*box-shadow: 5px 2px 7px #585555;*/
+				display: inline-block;
+				border-radius: 1px;
+				background: #00447b;
+				color: #fff;
+				font-size: 12px;
+				padding: 2px 10px;
+				margin: 3px 3px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+		.footer-panel {
+			background: #fff;
+			border-top: 5px double #ffaa34;
+			font-family: sans-serif;
+			line-height: 20px;
+			padding: 0 20px;
+			border-radius: 10px;
+		}
+
+			.footer-panel b {
+				color: #f15959;
+				font-weight: 700;
+			}
+
+		.bg-tran {
+			padding: 0 5px;
+			background: #fff;
+		}
+
+		.container {
+			width: 100%;
+		}
+
+		.page-heading {
+			display: flow-root;
+			margin: 5px ​0px -5px 0px;
+		}
+
+		.btn-go {
+			border: none;
+			padding: 0px 5px;
+		}
+
+		.mendat {
+			color: red;
+		}
+		/*Button Efect*/
+		/*button {
+			background-color: #3e8e41;
+			box-shadow: 0 5px #666;
+			transform: translateY(4px);
+		}*/
+
+		button:hover {
+			background-color: #3e8e41;
+			opacity: 0.9;
+		}
+
+		button:active {
+			box-shadow: 1px 1px 2px #666;
+			transform: translateY(1px);
+		}
+		.search-control {
+			width: 260px;
+			height: 28px;
+			font-size: 14px;
+			border: 1px solid #ddd;
+			padding: 5px;
+			border-radius: 2px;
+		}
+	</style>	
+</head>
+<body>
+	<div class="container">
+		@Html.Partial("_header")
+		<div class="row" style="background: #bfbfbf;">
+			<div class="col-md-3">
+				<i class="fa fa-bars toggle-bars slidefull"></i>
+				<div class="menu-section">
+					<h3>
+						<input type="text" id="txtSearchMenu" class="search-control" autocomplete="off" onkeyup="searchMenu()" placeholder="Search Menu..." /><i class="fa fa-bars pull-right"></i>
+						<hr />
+					</h3>
+					<ul id="menu-list">
+						@*<li><a href="Dashboard">Dashboard</a></li>
+							<li><a href="PatientRegister">Patient Approval</a></li>
+							<li><a href="TestAnalysis">Test Analysis</a></li>
+							<li><a href="TatReport">Tat Report</a></li>
+							<li><a href="DoctorWiseReport">Doctor Wise Report</a></li>
+							<li><a href="PatientAudit">Beneficiary Audit</a></li>
+							<li><a href="RecordVerification">Record Verification</a></li>*@
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-9" id="layout-section">
+				@RenderBody()
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+

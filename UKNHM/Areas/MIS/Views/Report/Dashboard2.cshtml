@@ -1,0 +1,363 @@
+﻿
+@{
+	ViewBag.Title = "Dashboard2";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+	.block {
+		background: #d9edf7 !important;
+		border-bottom: 7px solid #6999b1;
+		color: #484747 !important;
+		padding: 3px 0px;
+		border-radius: 2px;
+		cursor: pointer;
+		margin: 5px 0px;
+	}
+
+	.col-md-2 {
+		width: 13%;
+	}
+
+	.block h3:nth-child(2) {
+		margin: 13px 0px;
+		color: #5f5f5f;
+		font-size: 15px;
+	}
+
+	body {
+		font-family: 'Roboto', sans-serif !important;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	#tblTotal th, #tblTotal td {
+		border: none;
+		font-size: 12px;
+		white-space: nowrap;
+		padding: 3px;
+	}
+
+	#tblTotal span {
+		background: #d9edf7;
+		font-size: 12px;
+		padding: 0px 3px;
+		border-radius: 2px;
+		border: 1px solid #cbe7ff;
+		width: 95%;
+		display: inline-block;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		border: 1px solid #adc8f3;
+		padding: 5px;
+		border-radius: 4px;
+		background: #d9edf7;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			display: block;
+			padding: 10px 5px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 28px;
+		margin: -7px -2px;
+		border: 2px solid #3c3b3b;
+		float: right;
+		color: #585757;
+		padding: 5px 6px;
+		border-radius: 32px;
+		line-height: 13px;
+		height: 28px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.title {
+		text-align: center;
+		margin: 0;
+		padding: 3px;
+		color: #1e364b;
+		background: #ffc10770;
+		font-size: 20px;
+	}
+</style>
+<script src="~/Areas/MIS/JsModule/Dashboard2.js?v1.2"></script>
+<script src="~/JsModule/mdb.min.js"></script>
+<h3 class="title">Dashboard : 15th Finance Commission <hr /></h3>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="block" style="background:#ff5722;padding: 8px 0px;">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="flex form-group">
+							<label style="width:25%;">From</label>
+							<input type="date" style="padding: 2px;" class="form-control" id="txtFrom" />
+						</div>
+					</div>
+					<div class="col-md-12" style="margin:-2px">
+						<div class="flex">
+							<label style="width:33%;">To</label>
+							<input type="date" style="padding: 2px;" class="form-control" id="txtTo" />
+							<button class="btn-flat btn-success" id="btn" style="width:22%;background:#337ab7;padding:0;font-size: 11px;margin-left: 5px;" onclick="RegionAndDistrict()"><i class="fa fa-refresh"></i></button>
+						</div>
+					</div>
+					@*<div class="col-md-12">
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 1px 5px;" onclick="TestAnalysisCentreWise()">Search</button>
+						</div>*@
+				</div>
+				@*<a href="PanList">
+						<h3 class="text-center" id="bxTotalCompleted">00</h3>
+						<h3 class="text-center"><i class="fa fa-tasks">&nbsp;</i>Total Completed</h3>
+					</a>*@
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="block" style="background:#2961ff">
+				<a href="#">
+					<h3 class="text-center" id="bxTotalPatient">00</h3>
+					<h3 class="text-center"><i class="fa fa-user">&nbsp;</i>Total Patient</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="block" style="background:#bda603">
+				<a href="#">
+					<h3 class="text-center" id="bxTotalTest">00</h3>
+					<h3 class="text-center"><i class="fa fa-bar-chart">&nbsp;</i>Total Test</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="block" style="background:#118a6e">
+				<a href="#">
+					<h3 class="text-center" id="bxTotalAmount">00</h3>
+					<h3 class="text-center"><i class="fa fa-inr">&nbsp;</i>Total Amount</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="block" style="background:#c13d76">
+				<a href="#">
+					<h3 class="text-center" id="bxTotalApprove">00</h3>
+					<h3 class="text-center"><i class="fa fa-clock-o">&nbsp;</i>Pending Appr.</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="block" style="background:#c13d76">
+				<a href="#">
+					<h3 class="text-center" id="bxPHCAmt">00</h3>
+					<h3 class="text-center"><i class="fa fa-inr">&nbsp;</i>PHC Amt.</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="block" style="background:#c13d76">
+				<a href="#">
+					<h3 class="text-center" id="bxUPHCAmt">00</h3>
+					<h3 class="text-center"><i class="fa fa-inr">&nbsp;</i>UPHC Amt.</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Kumaon Region
+					@*<h5 class="pull-right total-count">Total Records :<span id="txtTotalCount">0</span></h5>*@
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="row" style="height:252px">
+								<div class="col-md-4 form-group">
+									<div class="panel panel-info" style="margin: 0;height:40vh">
+										<div class="panel-body" style="height: 35vh;padding: 0px;">
+											<table class="table" id="tblTotal">
+												<tr>
+													<th style="width:20%">Patient</th>
+													<th style="width:3%">:</th>
+													<td><span id="txtKumaonTotalPatient">00000</span></td>
+												</tr>
+												<tr>
+													<th style="width:20%">Test</th>
+													<th style="width:3%">:</th>
+													<td><span id="txtKumaonTotalTest">00000</span></td>
+												</tr>
+												<tr>
+													<th style="width:20%">Amount</th>
+													<th style="width:3%">:</th>
+													<td><span id="txtKumaonTotalAmount">00000</span></td>
+												</tr>
+											</table>
+											<hr style="border:1px solid #f5f5f5" />
+											<table class="table" id="tblTotal">
+												<tr>
+													<th colspan="3">Pending Approval</th>
+												</tr>
+												<tr>
+													<td colspan="3"><span id="txtKumaonTotalAppr">00000</span></td>
+												</tr>
+												<tr>
+													<td colspan="3"></td>
+												</tr>
+												<tr>
+													<th style="width:8%;font-size: 11px;">PHC Amount</th>
+													<th style="width:1%">:</th>
+													<td><span id="txtKPHCAmt">00000</span></td>
+												</tr>
+												<tr>
+													<th style="width:8%;font-size: 11px;">UPHC Amount</th>
+													<th style="width:1%">:</th>
+													<td><span id="txtKUPHCAmt">00000</span></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 form-group">
+									<div class="panel panel-info" style="margin: 0;height:40vh">
+										<div class="panel-heading text-center">
+											Patient Sarved Current Year
+										</div>
+										<div class="panel-body" id="divChartKumaon" style="height: 35vh;">
+											@*<img src="~/Content/img/graph.jpg" style="width:100%;height:205px" class="img-responsive" />*@
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="height:250px;">
+								<div class="col-md-12 form-group">
+									<div class="panel panel-info" style="margin: 0;height:40vh">
+										<div class="panel-body" style="height: 35vh;overflow:auto">
+											<div class="panel-group" id="accordionKumaon" role="tablist" aria-multiselectable="true">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Garhwal Region
+					@*<h5 class="pull-right total-count">Total Records :<span id="txtTotalCount">0</span></h5>*@
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="row" style="height:40vh">
+								<div class="col-md-4 form-group">
+									<div class="panel panel-info" style="margin: 0;height:40vh">
+										<div class="panel-body" style="height: 35vh;padding: 0px;">
+											<table class="table" id="tblTotal">
+												<tr>
+													<th style="width:20%">Patient</th>
+													<th style="width:3%">:</th>
+													<td><span id="txtGarwalTotalPatient">00000</span></td>
+												</tr>
+												<tr>
+													<th style="width:20%">Test</th>
+													<th style="width:3%">:</th>
+													<td><span id="txtGarwalTotalTest">00000</span></td>
+												</tr>
+												<tr>
+													<th style="width:20%">Amount</th>
+													<th style="width:3%">:</th>
+													<td><span id="txtGarwalTotalAmount">00000</span></td>
+												</tr>
+											</table>
+											<hr style="border:1px solid #f5f5f5" />
+											<table class="table" id="tblTotal">
+												<tr>
+													<th colspan="3">Pending Approval</th>
+												</tr>
+												<tr>
+													<td colspan="3"><span id="txtGarwalTotalAppr">00000</span></td>
+												</tr>
+												<tr>
+													<td colspan="3"></td>
+												</tr>
+												<tr>
+													<th style="width:8%;font-size: 11px;">PHC Amount</th>
+													<th style="width:1%">:</th>
+													<td><span id="txtGPHCAmt">00000</span></td>
+												</tr>
+												<tr>
+													<th style="width:8%;font-size: 11px;">UPHC Amount</th>
+													<th style="width:1%">:</th>
+													<td><span id="txtGUPHCAmt">00000</span></td>
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-8 form-group">
+									<div class="panel panel-info" style="margin: 0;height:40vh">
+										<div class="panel-heading text-center">
+											Patient Sarved Current Year
+										</div>
+										<div class="panel-body" id="divChartGarwal" style="height: 35vh;">
+											@*<img src="~/Content/img/graph.jpg" style="width:100%;height:205px" class="img-responsive" />*@
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row" style="height:250px;">
+								<div class="col-md-12 form-group">
+									<div class="panel panel-info" style="margin: 0;height:40vh">
+										<div class="panel-body" style="height: 35vh;overflow:auto">
+											<div class="panel-group" id="accordionGarwal" role="tablist" aria-multiselectable="true">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

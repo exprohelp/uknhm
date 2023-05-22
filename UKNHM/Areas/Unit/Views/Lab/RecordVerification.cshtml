@@ -1,0 +1,238 @@
+﻿@{
+	ViewBag.Title = "RecordVerification";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/Unit/JsModule/RecordVerification.js"></script>
+<link href="~/Content/magnify/jquery.magnify.min.css" rel="stylesheet" />
+<link href="~/Content/magnify/magnify-white-theme.css" rel="stylesheet" />
+<script src="~/Content/magnify/jquery.magnify.min.js"></script>
+<style>
+	.UploadSection {
+		background: url(https://exprohelp.com/UKNHM/Content/img/upload.png) no-repeat center;
+		height: 260px;
+		margin-top: 45px;
+	}
+
+	#btnFileUpload {
+		margin: 142px 0 56px 225px;
+	}
+
+	.bg-danger {
+		background-color: #ffbebe;
+	}
+
+	#patientInfo .select2-container .select2-selection--single {
+		box-sizing: border-box;
+		cursor: pointer;
+		display: block;
+		height: 23px;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	#tblPatientInfo .form-control {
+		height: 22px;
+	}
+
+	.IsCancel {
+		background: #ff9090;
+	}
+
+	.newTest {
+		background: #d6efd7;
+	}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Record Verification
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-2 form-group">
+									<label>Type</label>
+									<select id="ddlReportType" class="form-control">
+										<option>Pending</option>
+										<option>Approved</option>
+									</select>
+								</div>
+								<div class="col-md-4 form-group">
+									<label>Date</label>
+									<input type="date" id="txtFrom" class="form-control" />
+								</div>
+								<div class="col-md-6 form-group">
+									<label>Centre Name</label>
+									<div class="flex">
+										<select id="ddlCentreName" class="form-control"></select>
+										<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="BookingListForVerification()">Get</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row">
+								<div class="col-md-4 form-group">
+									<label>Search By</label>
+									<select id="ddlReportType" class="form-control">
+										<option>Mobile No</option>
+										<option>Visit No</option>
+										<option>Barcode No</option>
+									</select>
+								</div>
+								<div class="col-md-8 form-group">
+									<label>Input</label>
+									<div class="flex">
+										<input type="text" id="txtInput" placeholder="Enter Value" class="form-control bn" style="border-color:#337ab7;border-radius:0" />
+										<button class="btn-flat btn-success" id="btnSave" style="background:#337ab7;padding: 4px;width:33%" onclick="BookingListByVisitNo()">Get</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:420px">
+								<table class="table table-bordered" id="tblPatientRegister">
+									<thead>
+										<tr>
+											<th style="width: 10%;">Visit No</th>
+											<th style="width: 5%;">Barcode No</th>
+											<th style="width: 11%;">Visit Date</th>
+											<th style="width: 14%;">Patient Name</th>
+											<th style="width: 5%;">Age</th>
+											<th style="width: 2%;">Gender</th>
+											<th style="width:12%">Prescribed By</th>
+											<th style="width: 4%;text-align:right;">Bill Amt</th>
+											<th style="width: 0%;">Bill/Pres.</th>
+											<th style="width: 7%;">Appr Date</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modalPatientInfo" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg" style="width: 1245px;">
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top:0%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="btnPresc"></div>
+			</div>
+			<div class="modal-body" style="padding: 12px 30px;">
+				<div class="row">
+					<div class="col-md-6 form-group" style="overflow:auto;height:485px">
+						<a data-magnify="gallery" data-src="" data-group="a" href="">
+							<img src="" id="imgPresc" style="width:100%;cursor:zoom-in" />
+						</a>
+						<div class="UploadSection">
+							<div style="width:78%;margin: auto;display:flex">
+								<select id="ddlPresc" class="form-control"></select>
+								<button class="btn-flat btn-warning" id="btnSubmit1" onclick="UploadPresc()" style="width:23%"><i class="fa fa-upload">&nbsp;</i>Upload</button>
+							</div>
+							<input type="file" id="FileUpload" onchange="IsValid(this)" style="display:none" />
+							<button class="btn-flat btn-success" id="btnFileUpload">Browse File</button>
+							<label id="txtFileName"></label>
+						</div>
+					</div>
+					<div class="col-md-6 form-group">
+						<div class="panel panel-primary">
+							<div class="panel-heading" style="height: 29px;">
+								<button class="btn-flat btn-success pull-left" id="btnApprove" onclick="Approve()" style="background:#33b780;padding: 4px;margin-top: -4px;">Approve</button>
+								<h2></h2>
+								<button class="btn-flat btn-warning pull-right" onclick="Insert()" id="btnSubmit" style="padding: 4px;margin-right:3px;margin-top: -24px;">Submit</button>
+							</div>
+							<div class="panel-body" style="height:465px">
+								<div class="col-md-12 form-group">
+									<table class="table table-bordered" id="patientInfo">
+										<tr>
+											<th>Visit No</th>
+											<th>:</th>
+											<td id="txtVisitNo" colspan="2"></td>
+											@*<td style="display:none" id="txtBarcodeNo"></td>*@
+											<td style="display:none" id="txtCentreId"></td>
+											<th>BarcodeNo</th>
+											<th>:</th>
+											<td class="flex"><input type="text" id="txtBarcodeNo" placeholder="Barcode No" /><button id="btnUpdateBarcode" class="btn-flat btn-success" onclick="UpdateBarcode()">Update</button></td>
+										</tr>
+										<tr>
+											<th>Name Of Unit</th>
+											<th>:</th>
+											<td id="txtUnitName" colspan="5"></td>
+										</tr>
+										<tr>
+											<th>Patient Name</th>
+											<th>:</th>
+											<td colspan="2"><input type="text" id="txtPatientName" /></td>
+
+											<th>Gender</th>
+											<th>:</th>
+											<td><select id="ddlGender" class="form-control"><option>Male</option><option>Female</option></select></td>
+										</tr>
+										<tr>
+											<th>Mobile No</th>
+											<th>:</th>
+											<td id="txtMobileNo" colspan="2"></td>
+
+											<th>Age</th>
+											<th>:</th>
+											<td class="flex"><input type="text" id="txtAge" /><select id="ddlAgeType" class="form-control"><option>Year</option><option>Month</option></select></td>
+										</tr>
+										<tr>
+											<th>Prescribed By</th>
+											<th>:</th>
+											<td colspan="5">
+												<div class="flex">
+													<select id="ddlDoctor" class="form-control"></select>
+													<button id="btnUpdateDoctor" class="btn-flat btn-success" style="width: 25%;" onclick="ChangeDoctor()">Change Doctor</button>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<div class="col-md-8 form-group" style="display:block">
+									<label>Test Name</label>
+									<select id="ddlTestName" class="form-control"></select>
+								</div>
+								<div class="col-md-4 form-group" style="display:block">
+									<label>Amount</label>
+									<div class="flex">
+										<input type="text" id="txtTestAmount" disabled="disabled" placeholder="0" class="form-control bn text-right" style="border-color:#337ab7;border-radius:0" />
+										<button class="btn-flat btn-success" id="AddNewTest" style="background:#337ab7;padding: 4px;width:33%">Add</button>
+									</div>
+								</div>
+								<div class="col-md-12 form-group">
+									<div class="scroll" style="height: 195px;">
+										<table class="table table-bordered" id="tblPatientInfo">
+											<thead>
+												<tr>
+													<th style="width: 1%;"><input type='checkbox' /></th>
+													<th>Investigation Name</th>
+													<th style="width: 10%;text-align:right">Amount</th>
+													<th><input type="text" class="form-control" /></th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,1018 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCenterWiseSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CenterCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCenterWiseSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCenterWiseSaleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartyWiseSale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CenterCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartyWiseSaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPartyWiseSaleResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPatientAuthorization">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPatientAuthorizationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPatientAuthorizationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPro_Bussiness">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DateInMonth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPro_BussinessResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPro_BussinessResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitWiseTotalSales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitWiseTotalSalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitWiseTotalSalesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPHealthBookingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPHealthBookingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPHealthBookingDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHABookingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SHABookingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SHABookingDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HimHealthBookingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HimHealthBookingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HimHealthBookingDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPHealth_CancelTest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VisitID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UPHealth_CancelTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UPHealth_CancelTestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChandanHospital_BookingData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:annotation>
+                  <s:appinfo>
+                    <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  </s:appinfo>
+                </s:annotation>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChandanHospital_BookingDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ChandanHospital_BookingDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="chandanHosp_PatientLabResult_pdf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SRCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="chandanHosp_PatientLabResult_pdfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="chandanHosp_PatientLabResult_pdfResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PettyCashRecords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="centreCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromdate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="todate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PettyCashRecordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PettyCashRecordsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPro_Bussiness_Target">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PROCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DateInMonth" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPro_Bussiness_TargetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPro_Bussiness_TargetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_GetPro_Bussiness_Target">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pro_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="targer_date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="target_amt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_GetPro_Bussiness_TargetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_GetPro_Bussiness_TargetResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTATSummary">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CentreCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTATSummaryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTATSummaryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ItemCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetItemListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetItemListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_PatientRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="P_MobileNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Age" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gender" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CentreCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Datetime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_PatientRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_PatientRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportHeader">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VisitNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportHeaderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportHeaderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApprovalDoctorList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApprovalDoctorListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetApprovalDoctorListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApprovalDoctorSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EmployeeID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetApprovalDoctorSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetApprovalDoctorSignatureResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportSave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VisitNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ReportData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReportSaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReportSaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCenterWiseSaleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCenterWiseSale" />
+  </wsdl:message>
+  <wsdl:message name="GetCenterWiseSaleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCenterWiseSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartyWiseSaleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartyWiseSale" />
+  </wsdl:message>
+  <wsdl:message name="GetPartyWiseSaleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartyWiseSaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPatientAuthorizationSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPatientAuthorization" />
+  </wsdl:message>
+  <wsdl:message name="GetPatientAuthorizationSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPatientAuthorizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPro_BussinessSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPro_Bussiness" />
+  </wsdl:message>
+  <wsdl:message name="GetPro_BussinessSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPro_BussinessResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitWiseTotalSalesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitWiseTotalSales" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitWiseTotalSalesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitWiseTotalSalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPHealthBookingDataSoapIn">
+    <wsdl:part name="parameters" element="tns:UPHealthBookingData" />
+  </wsdl:message>
+  <wsdl:message name="UPHealthBookingDataSoapOut">
+    <wsdl:part name="parameters" element="tns:UPHealthBookingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="SHABookingDataSoapIn">
+    <wsdl:part name="parameters" element="tns:SHABookingData" />
+  </wsdl:message>
+  <wsdl:message name="SHABookingDataSoapOut">
+    <wsdl:part name="parameters" element="tns:SHABookingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="HimHealthBookingDataSoapIn">
+    <wsdl:part name="parameters" element="tns:HimHealthBookingData" />
+  </wsdl:message>
+  <wsdl:message name="HimHealthBookingDataSoapOut">
+    <wsdl:part name="parameters" element="tns:HimHealthBookingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="UPHealth_CancelTestSoapIn">
+    <wsdl:part name="parameters" element="tns:UPHealth_CancelTest" />
+  </wsdl:message>
+  <wsdl:message name="UPHealth_CancelTestSoapOut">
+    <wsdl:part name="parameters" element="tns:UPHealth_CancelTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChandanHospital_BookingDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ChandanHospital_BookingData" />
+  </wsdl:message>
+  <wsdl:message name="ChandanHospital_BookingDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ChandanHospital_BookingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="chandanHosp_PatientLabResult_pdfSoapIn">
+    <wsdl:part name="parameters" element="tns:chandanHosp_PatientLabResult_pdf" />
+  </wsdl:message>
+  <wsdl:message name="chandanHosp_PatientLabResult_pdfSoapOut">
+    <wsdl:part name="parameters" element="tns:chandanHosp_PatientLabResult_pdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="PettyCashRecordsSoapIn">
+    <wsdl:part name="parameters" element="tns:PettyCashRecords" />
+  </wsdl:message>
+  <wsdl:message name="PettyCashRecordsSoapOut">
+    <wsdl:part name="parameters" element="tns:PettyCashRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPro_Bussiness_TargetSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPro_Bussiness_Target" />
+  </wsdl:message>
+  <wsdl:message name="GetPro_Bussiness_TargetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPro_Bussiness_TargetResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_GetPro_Bussiness_TargetSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_GetPro_Bussiness_Target" />
+  </wsdl:message>
+  <wsdl:message name="Insert_GetPro_Bussiness_TargetSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_GetPro_Bussiness_TargetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTATSummarySoapIn">
+    <wsdl:part name="parameters" element="tns:GetTATSummary" />
+  </wsdl:message>
+  <wsdl:message name="GetTATSummarySoapOut">
+    <wsdl:part name="parameters" element="tns:GetTATSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetItemListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetItemList" />
+  </wsdl:message>
+  <wsdl:message name="GetItemListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetItemListResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_PatientRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_PatientRequest" />
+  </wsdl:message>
+  <wsdl:message name="Insert_PatientRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_PatientRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportHeaderSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetReportHeaderSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportHeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovalDoctorListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApprovalDoctorList" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovalDoctorListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApprovalDoctorListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovalDoctorSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:GetApprovalDoctorSignature" />
+  </wsdl:message>
+  <wsdl:message name="GetApprovalDoctorSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:GetApprovalDoctorSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReportSaveSoapIn">
+    <wsdl:part name="parameters" element="tns:ReportSave" />
+  </wsdl:message>
+  <wsdl:message name="ReportSaveSoapOut">
+    <wsdl:part name="parameters" element="tns:ReportSaveResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SaleServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCenterWiseSale">
+      <wsdl:input message="tns:GetCenterWiseSaleSoapIn" />
+      <wsdl:output message="tns:GetCenterWiseSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartyWiseSale">
+      <wsdl:input message="tns:GetPartyWiseSaleSoapIn" />
+      <wsdl:output message="tns:GetPartyWiseSaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientAuthorization">
+      <wsdl:input message="tns:GetPatientAuthorizationSoapIn" />
+      <wsdl:output message="tns:GetPatientAuthorizationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPro_Bussiness">
+      <wsdl:input message="tns:GetPro_BussinessSoapIn" />
+      <wsdl:output message="tns:GetPro_BussinessSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitWiseTotalSales">
+      <wsdl:input message="tns:GetUnitWiseTotalSalesSoapIn" />
+      <wsdl:output message="tns:GetUnitWiseTotalSalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPHealthBookingData">
+      <wsdl:input message="tns:UPHealthBookingDataSoapIn" />
+      <wsdl:output message="tns:UPHealthBookingDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SHABookingData">
+      <wsdl:input message="tns:SHABookingDataSoapIn" />
+      <wsdl:output message="tns:SHABookingDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HimHealthBookingData">
+      <wsdl:input message="tns:HimHealthBookingDataSoapIn" />
+      <wsdl:output message="tns:HimHealthBookingDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UPHealth_CancelTest">
+      <wsdl:input message="tns:UPHealth_CancelTestSoapIn" />
+      <wsdl:output message="tns:UPHealth_CancelTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChandanHospital_BookingData">
+      <wsdl:input message="tns:ChandanHospital_BookingDataSoapIn" />
+      <wsdl:output message="tns:ChandanHospital_BookingDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="chandanHosp_PatientLabResult_pdf">
+      <wsdl:input message="tns:chandanHosp_PatientLabResult_pdfSoapIn" />
+      <wsdl:output message="tns:chandanHosp_PatientLabResult_pdfSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PettyCashRecords">
+      <wsdl:input message="tns:PettyCashRecordsSoapIn" />
+      <wsdl:output message="tns:PettyCashRecordsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPro_Bussiness_Target">
+      <wsdl:input message="tns:GetPro_Bussiness_TargetSoapIn" />
+      <wsdl:output message="tns:GetPro_Bussiness_TargetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_GetPro_Bussiness_Target">
+      <wsdl:input message="tns:Insert_GetPro_Bussiness_TargetSoapIn" />
+      <wsdl:output message="tns:Insert_GetPro_Bussiness_TargetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTATSummary">
+      <wsdl:input message="tns:GetTATSummarySoapIn" />
+      <wsdl:output message="tns:GetTATSummarySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetItemList">
+      <wsdl:input message="tns:GetItemListSoapIn" />
+      <wsdl:output message="tns:GetItemListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_PatientRequest">
+      <wsdl:input message="tns:Insert_PatientRequestSoapIn" />
+      <wsdl:output message="tns:Insert_PatientRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportHeader">
+      <wsdl:input message="tns:GetReportHeaderSoapIn" />
+      <wsdl:output message="tns:GetReportHeaderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovalDoctorList">
+      <wsdl:input message="tns:GetApprovalDoctorListSoapIn" />
+      <wsdl:output message="tns:GetApprovalDoctorListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovalDoctorSignature">
+      <wsdl:input message="tns:GetApprovalDoctorSignatureSoapIn" />
+      <wsdl:output message="tns:GetApprovalDoctorSignatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReportSave">
+      <wsdl:input message="tns:ReportSaveSoapIn" />
+      <wsdl:output message="tns:ReportSaveSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SaleServiceSoap" type="tns:SaleServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCenterWiseSale">
+      <soap:operation soapAction="http://tempuri.org/GetCenterWiseSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartyWiseSale">
+      <soap:operation soapAction="http://tempuri.org/GetPartyWiseSale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientAuthorization">
+      <soap:operation soapAction="http://tempuri.org/GetPatientAuthorization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPro_Bussiness">
+      <soap:operation soapAction="http://tempuri.org/GetPro_Bussiness" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitWiseTotalSales">
+      <soap:operation soapAction="http://tempuri.org/GetUnitWiseTotalSales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPHealthBookingData">
+      <soap:operation soapAction="http://tempuri.org/UPHealthBookingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHABookingData">
+      <soap:operation soapAction="http://tempuri.org/SHABookingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HimHealthBookingData">
+      <soap:operation soapAction="http://tempuri.org/HimHealthBookingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPHealth_CancelTest">
+      <soap:operation soapAction="http://tempuri.org/UPHealth_CancelTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChandanHospital_BookingData">
+      <soap:operation soapAction="http://tempuri.org/ChandanHospital_BookingData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chandanHosp_PatientLabResult_pdf">
+      <soap:operation soapAction="http://tempuri.org/chandanHosp_PatientLabResult_pdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PettyCashRecords">
+      <soap:operation soapAction="http://tempuri.org/PettyCashRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPro_Bussiness_Target">
+      <soap:operation soapAction="http://tempuri.org/GetPro_Bussiness_Target" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_GetPro_Bussiness_Target">
+      <soap:operation soapAction="http://tempuri.org/Insert_GetPro_Bussiness_Target" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTATSummary">
+      <soap:operation soapAction="http://tempuri.org/GetTATSummary" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemList">
+      <soap:operation soapAction="http://tempuri.org/GetItemList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_PatientRequest">
+      <soap:operation soapAction="http://tempuri.org/Insert_PatientRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportHeader">
+      <soap:operation soapAction="http://tempuri.org/GetReportHeader" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovalDoctorList">
+      <soap:operation soapAction="http://tempuri.org/GetApprovalDoctorList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovalDoctorSignature">
+      <soap:operation soapAction="http://tempuri.org/GetApprovalDoctorSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportSave">
+      <soap:operation soapAction="http://tempuri.org/ReportSave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SaleServiceSoap12" type="tns:SaleServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCenterWiseSale">
+      <soap12:operation soapAction="http://tempuri.org/GetCenterWiseSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartyWiseSale">
+      <soap12:operation soapAction="http://tempuri.org/GetPartyWiseSale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientAuthorization">
+      <soap12:operation soapAction="http://tempuri.org/GetPatientAuthorization" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPro_Bussiness">
+      <soap12:operation soapAction="http://tempuri.org/GetPro_Bussiness" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitWiseTotalSales">
+      <soap12:operation soapAction="http://tempuri.org/GetUnitWiseTotalSales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPHealthBookingData">
+      <soap12:operation soapAction="http://tempuri.org/UPHealthBookingData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SHABookingData">
+      <soap12:operation soapAction="http://tempuri.org/SHABookingData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HimHealthBookingData">
+      <soap12:operation soapAction="http://tempuri.org/HimHealthBookingData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UPHealth_CancelTest">
+      <soap12:operation soapAction="http://tempuri.org/UPHealth_CancelTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChandanHospital_BookingData">
+      <soap12:operation soapAction="http://tempuri.org/ChandanHospital_BookingData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="chandanHosp_PatientLabResult_pdf">
+      <soap12:operation soapAction="http://tempuri.org/chandanHosp_PatientLabResult_pdf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PettyCashRecords">
+      <soap12:operation soapAction="http://tempuri.org/PettyCashRecords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPro_Bussiness_Target">
+      <soap12:operation soapAction="http://tempuri.org/GetPro_Bussiness_Target" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_GetPro_Bussiness_Target">
+      <soap12:operation soapAction="http://tempuri.org/Insert_GetPro_Bussiness_Target" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTATSummary">
+      <soap12:operation soapAction="http://tempuri.org/GetTATSummary" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetItemList">
+      <soap12:operation soapAction="http://tempuri.org/GetItemList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_PatientRequest">
+      <soap12:operation soapAction="http://tempuri.org/Insert_PatientRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportHeader">
+      <soap12:operation soapAction="http://tempuri.org/GetReportHeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovalDoctorList">
+      <soap12:operation soapAction="http://tempuri.org/GetApprovalDoctorList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetApprovalDoctorSignature">
+      <soap12:operation soapAction="http://tempuri.org/GetApprovalDoctorSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReportSave">
+      <soap12:operation soapAction="http://tempuri.org/ReportSave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SaleService">
+    <wsdl:port name="SaleServiceSoap" binding="tns:SaleServiceSoap">
+      <soap:address location="http://192.168.0.21/Chandan/SaleService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SaleServiceSoap12" binding="tns:SaleServiceSoap12">
+      <soap12:address location="http://192.168.0.21/Chandan/SaleService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

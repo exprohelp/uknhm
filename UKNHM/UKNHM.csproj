@@ -1,0 +1,377 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1CB02363-8D82-4D5C-BC86-5132627F842E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UKNHM</RootNamespace>
+    <AssemblyName>UKNHM</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetIntegrationKit, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\CHANDAN\Desktop\sql\DotNetIntegrationKit.dll</HintPath>
+    </Reference>
+    <Reference Include="HiQPdf, Version=8.10.0.0, Culture=neutral, PublicKeyToken=acd8b62594985b24, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\CHANDAN\Desktop\HiQPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="TPSLAESSecurityCipher, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ae30ce8f45437696, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\CHANDAN\Desktop\sql\TPSLAESSecurityCipher.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.6\lib\net461\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.6.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.6\lib\net461\zxing.presentation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\ApplicationResource\JsModule\CentreAllotment.js" />
+    <Content Include="Areas\ApplicationResource\JsModule\DoctorMaster.js" />
+    <Content Include="Areas\ApplicationResource\JsModule\DoctorView.js" />
+    <Content Include="Areas\Invoice\JsModule\BillDetails.js" />
+    <Content Include="Areas\Invoice\JsModule\BillPayment.js" />
+    <Content Include="Areas\Invoice\JsModule\EQASDeduction.js" />
+    <Content Include="Areas\Invoice\JsModule\GenInvoice.js" />
+    <Content Include="Areas\Invoice\JsModule\InvoiceCMOVerification.js" />
+    <Content Include="Areas\Invoice\JsModule\InvoicePaymentInfo.js" />
+    <Content Include="Areas\Invoice\JsModule\InvoicePaymentResponse.js" />
+    <Content Include="Areas\Invoice\JsModule\InvoiceSummary.js" />
+    <Content Include="Areas\Invoice\JsModule\InvoiceSummaryForCMS.js" />
+    <Content Include="Areas\Invoice\JsModule\ReceivableReport.js" />
+    <Content Include="Areas\MIS\JsModule\CampaignMaster.js" />
+    <Content Include="Areas\MIS\JsModule\CancelReport.js" />
+    <Content Include="Areas\MIS\JsModule\CentreList.js" />
+    <Content Include="Areas\MIS\JsModule\CMSApprovalPendency.js" />
+    <Content Include="Areas\MIS\JsModule\Dashboard2.js" />
+    <Content Include="Areas\MIS\JsModule\EQASDateShifting.js" />
+    <Content Include="Areas\MIS\JsModule\EqasReadingEntryForm.js" />
+    <Content Include="Areas\MIS\JsModule\EQASReportNHM.js" />
+    <Content Include="Areas\MIS\JsModule\EQASReport.js" />
+    <Content Include="Areas\MIS\JsModule\MonthlySaleReport.js" />
+    <Content Include="Areas\MIS\JsModule\RawDataTestWise.js" />
+    <Content Include="Areas\MIS\JsModule\RepeatedEntry.js" />
+    <Content Include="Areas\MIS\JsModule\SampleReadingLog.js" />
+    <Content Include="Areas\MIS\JsModule\TatReportChandan.js" />
+    <Content Include="Areas\MIS\JsModule\TestAnalysisConsolidated.js" />
+    <Content Include="Areas\MIS\JsModule\TestCountBreakup.js" />
+    <Content Include="Areas\MobileApp\JsModule\DispatchSample.js" />
+    <Content Include="Areas\MobileApp\JsModule\NHMUserMaster.js" />
+    <Content Include="Areas\Unit\JsModule\ITDoseBulkSync.js" />
+    <Content Include="Areas\ApplicationResource\JsModule\MobileAppUser.js" />
+    <Content Include="Areas\ApplicationResource\JsModule\UserMaster.js" />
+    <Content Include="Areas\MIS\JsModule\Dashboard.js" />
+    <Content Include="Areas\MIS\JsModule\DoctorWiseReport.js" />
+    <Content Include="Areas\MIS\JsModule\NHMOverAllSummary.js" />
+    <Content Include="Areas\MIS\JsModule\NHMSummary.js" />
+    <Content Include="Areas\MIS\JsModule\PatientApproval.js" />
+    <Content Include="Areas\MIS\JsModule\PatientAudit.js" />
+    <Content Include="Areas\MIS\JsModule\PatientRegister.js" />
+    <Content Include="Areas\MIS\JsModule\RawData.js" />
+    <Content Include="Areas\MIS\JsModule\RegInfo.js" />
+    <Content Include="Areas\MobileApp\JsModule\DPR.js" />
+    <Content Include="Areas\MobileApp\JsModule\OTPByPass.js" />
+    <Content Include="Areas\MobileApp\JsModule\UserPasswordChange.js" />
+    <Content Include="Areas\MobileApp\JsModule\ViewPrescription.js" />
+    <Content Include="Areas\Unit\JsModule\CancelTest.js" />
+    <Content Include="Areas\Unit\JsModule\DisasterMarking.js" />
+    <Content Include="Areas\Unit\JsModule\MotherLabVerification.js" />
+    <Content Include="Areas\Unit\JsModule\ProcessingLabTat.js" />
+    <Content Include="Areas\Unit\JsModule\ReceiveSample.js" />
+    <Content Include="Areas\Unit\JsModule\RecordVerification.js" />
+    <Content Include="Areas\MIS\JsModule\TatReport.js" />
+    <Content Include="Areas\MIS\JsModule\TestAnalysis.js" />
+    <Content Include="Areas\MobileApp\JsModule\PatientRegister.js" />
+    <Content Include="Areas\MobileApp\JsModule\PatientRegistration.js" />
+    <Content Include="Areas\MobileApp\JsModule\PatientReport.js" />
+    <Content Include="Areas\Unit\JsModule\SysncFailedInfo.js" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\img\bg-panel.png" />
+    <Content Include="Content\img\bg.jpg" />
+    <Content Include="Content\img\bg1.jpg" />
+    <Content Include="Content\img\Contact-US.png" />
+    <Content Include="Content\img\covid.gif" />
+    <Content Include="Content\img\graph.jpg" />
+    <Content Include="Content\img\help.png" />
+    <Content Include="Content\img\loading.gif" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\logo_nhm.png" />
+    <Content Include="Content\img\logo_nhm_old.png" />
+    <Content Include="Content\img\NHM_logo.png" />
+    <Content Include="Content\img\pres1.jpeg" />
+    <Content Include="Content\img\QRCode.png" />
+    <Content Include="Content\img\waiting.gif" />
+    <Content Include="Content\img\upload.png" />
+    <Content Include="Content\img\NHM_Chandan.png" />
+    <Content Include="Content\img\user-icon.png" />
+    <Content Include="Content\js\select2.js" />
+    <Content Include="Content\magnify\jquery.magnify.min.css" />
+    <Content Include="Content\magnify\jquery.magnify.min.js" />
+    <Content Include="Content\magnify\magnify-white-theme.css" />
+    <Content Include="Global.asax" />
+    <Content Include="JsModule\Authentication.js" />
+    <Content Include="JsModule\file-saver.js" />
+    <Content Include="JsModule\global.js" />
+    <Content Include="JsModule\mdb.min.js" />
+    <Content Include="JsModule\moment.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\APIProxy.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ApplicationResource\ApplicationResourceAreaRegistration.cs" />
+    <Compile Include="Areas\ApplicationResource\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Invoice\Controllers\InvoiceController.cs" />
+    <Compile Include="Areas\Invoice\InvoiceAreaRegistration.cs" />
+    <Compile Include="Areas\MIS\Controllers\PrintController.cs" />
+    <Compile Include="Areas\MIS\Controllers\ReportController.cs" />
+    <Compile Include="Areas\MIS\MISAreaRegistration.cs" />
+    <Compile Include="Areas\MobileApp\Controllers\AppController.cs" />
+    <Compile Include="Areas\MobileApp\MobileAppAreaRegistration.cs" />
+    <Compile Include="Areas\Unit\Controllers\LabController.cs" />
+    <Compile Include="Areas\Unit\UnitAreaRegistration.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AmountConverter.cs" />
+    <Compile Include="Repository\GenerateQRCode.cs" />
+    <Compile Include="Repository\PdfGenerator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\MIS\Views\web.config" />
+    <Content Include="Areas\MobileApp\Views\web.config" />
+    <Content Include="Areas\MobileApp\Views\Shared\_header.cshtml" />
+    <Content Include="Areas\MobileApp\Views\Shared\_layout.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\PatientRegistration.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\web.config" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\Dashboard.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\Dashboard.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\PatientRegister.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\MultiOptions.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\PatientRegister.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\PatientReport.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\TestAnalysis.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\TatReport.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\DoctorWiseReport.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\DoctorMaster.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\PatientAudit.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\RecordVerification.cshtml" />
+    <Content Include="Areas\Unit\Views\web.config" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\UserMaster.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\PatientApproval.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\DisasterMarking.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\upc.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\MotherLabVerification.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\DPR.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\ProcessingLabTat.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\MobileAppUser.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\OTPByPass.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\ViewPrescription.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\DoctorView.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\RegInfo.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\RawData.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\NHMSummary.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\SysncFailedInfo.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\NHMOverAllSummary.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\CancelTest.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\ITDoseBulkSync.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\CancelReport.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\RawDataTestWise.cshtml" />
+    <Content Include="Areas\ApplicationResource\Views\Admin\CentreAllotment.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\NHMUserMaster.cshtml" />
+    <Content Include="Areas\Unit\Views\Lab\ReceiveSample.cshtml" />
+    <Content Include="Areas\MobileApp\Views\App\DispatchSample.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\TatReportChandan.cshtml" />
+    <Content Include="Areas\Invoice\Views\web.config" />
+    <Content Include="Areas\Invoice\Views\Invoice\PrintInvoice.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\InvoiceSummary.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\BillPayment.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\CMSApprovalPendency.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\BillDetails.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\GenInvoice.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\TestCountBreakup.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\InvoicePaymentResponse.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\EqasReadingEntryForm.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\EQASReport.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\InvoiceCMOVerification.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\SampleReadingLog.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\Dashboard2.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\TestAnalysisConsolidated.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\InvoiceSummaryForCMS.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\EQASDeduction.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\RepeatedEntry.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\InvoicePaymentInfo.cshtml" />
+    <Content Include="Areas\Invoice\Views\Invoice\ReceivableReport.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\CentreList.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\MonthlySaleReport.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\EQASReportNHM.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\EQASDateShifting.cshtml" />
+    <Content Include="Areas\MIS\Views\Report\CampaignMaster.cshtml" />
+    <None Include="packages.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Views\Shared\_header.cshtml" />
+    <Content Include="Views\Shared\_layout.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\Shared1\_header.cshtml" />
+    <Content Include="Views\Shared1\_layout.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\ApplicationResource\Models\" />
+    <Folder Include="Areas\ApplicationResource\Views\Shared\" />
+    <Folder Include="Areas\Invoice\Models\" />
+    <Folder Include="Areas\Invoice\Views\Shared\" />
+    <Folder Include="Areas\MIS\Models\" />
+    <Folder Include="Areas\MIS\Views\Print\" />
+    <Folder Include="Areas\MIS\Views\Shared\" />
+    <Folder Include="Areas\Unit\Models\" />
+    <Folder Include="Areas\Unit\Views\Shared\" />
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UKNHMApi\UKNHMApi.csproj">
+      <Project>{4157660c-04ee-4bc1-90cf-ae3f868af2b9}</Project>
+      <Name>UKNHMApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52172</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52172/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

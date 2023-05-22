@@ -1,0 +1,228 @@
+﻿
+@{
+	ViewBag.Title = "DispatchSample";
+	Layout = "~/Areas/MobileApp/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.btn-go {
+		border-radius: 2px;
+		border: none;
+	}
+
+	body {
+		background-color: #ececec;
+	}
+	.total {
+		padding: 5px 4px 35px;
+		border: 1px solid #bae0ff;
+		line-height: 13px;
+	}
+	#tblTotal td, #tblTotal th {
+		background: #fff !important;
+		color: #424141;
+		font-size:13px !important;
+	}
+	#tblTotal th:first-child {
+		width:70%;
+	}
+
+	.report {
+		border-radius: 3px;
+		box-shadow: 1px 0px 4px #e0e0e0;
+		cursor: pointer;
+		border: 1px solid #e6e6e6;
+		background: #fff;
+		padding: 9px 0px;
+		display: flex;
+		width: 94%;
+		margin-bottom: 7px;
+		margin: 10px;
+	}
+
+	table td, th {
+		font-size: 12px !important;
+		padding: 0px 3px;
+	}
+
+	.report-left {
+		border: 1px solid #a9e0ff;
+		margin: 0 10px;
+		width: 90px;
+		background: #ececec;
+		padding: 15px 30px;
+	}
+
+		.report-left .fa {
+			font-size: 31px;
+			color: #3eb1f3;
+		}
+
+	.report-right {
+		width: 75%;
+	}
+
+	.report-title {
+		font-size: 16px;
+		font-weight: 500;
+		color: #000;
+	}
+
+	.report-des {
+		font-size: 13px;
+		color: #999999;
+	}
+
+	.report-btn {
+		width: 65px;
+		padding: 0px 14px;
+		font-size: 13px;
+		border: none;
+		box-shadow: none;
+	}
+
+	.select-row td {
+		color: #fff;
+		background: #33abb7 !important;
+	}
+
+	.bg {
+		color: #333 !important;
+		background: #e6e6e6 !important;
+	}
+
+	.card {
+		position: relative;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		min-width: 0;
+		word-wrap: break-word;
+		background-color: #fff;
+		background-clip: border-box;
+		border: 1px solid rgba(0,0,0,.125);
+		border-radius: .25rem;
+	}
+
+	.visitnow {
+		padding: 0px 19px 5px 19px;
+		margin-top: 8px;
+	}
+
+	.card-body {
+		background-color: #d8d5d5;
+		height: 106px;
+		-ms-flex: 1 1 auto;
+		flex: 1 1 auto;
+		min-height: 1px;
+		padding: 1.25rem;
+	}
+
+	.form {
+		background: #fff;
+		padding: 10px 15px;
+		margin: 5px;
+	}
+
+	.bn {
+		border-radius: 0px;
+		border: 1px solid #339ff9;
+	}
+
+	.tableFixHead {
+		overflow-y: auto;
+		height: 200px;
+	}
+
+		.tableFixHead thead th {
+			position: sticky;
+			top: 0;
+		}
+
+	th {
+		color: white;
+		background: #339ff9;
+	}
+
+	.info {
+		background: #fff;
+		margin: 4px 6px;
+	}
+
+		.info span {
+			padding: 5px;
+			background: #339ff9;
+			color: #fff;
+			font-size: 11px;
+			display: block;
+		}
+
+	.bg-white {
+		background: #fff !important;
+		color: rgba(0,0,0,.125);
+	}
+
+	download {
+		padding: 5px;
+		background: #fff;
+		color: #3a3a3a;
+		font-size: 12px;
+		display: block;
+	}
+
+	.bn1 {
+		border: none;
+		border-radius: 0;
+	}
+	
+</style>
+
+<script src="~/Areas/MobileApp/JsModule/DispatchSample.js"></script>
+<div id="page-content" style="background: #ececec;">
+	<div class="form">
+		<div class="row form-group">
+			<div class="col-xs-12 form-group">
+				<div class="flex">
+					<button class="bn btn-danger" style="width:30%;background:#339ff9;font-size: 12px;">Date</button>
+					<input type="date" id="txtDate" class="form-control bn" />
+					<button class="bn btn-danger" onclick="GetPendency()" style="width:30%;background:#fb9b0c;border:1px solid #fb9b0c;margin-left:5px;">Get</button>
+				</div>
+			</div>
+			<div class="col-xs-12 form-group">
+				<div class="total">
+					<table class="table-condensed" id="tblTotal">
+						<tbody>
+							<tr>
+								<th>No. of Patient</th>
+								<th>:</th>
+								<td id="txtTotalPatient">XXXXXXXXXX</td>
+							</tr>
+							<tr>
+								<th>Scanned Pendency</th>
+								<th>:</th>
+								<td id="txtTotalScannedPendency">XXXXXXXXXX</td>
+							</tr>
+						</tbody>
+					</table>
+					<button class="btn btn-success btn-xs pull-right" onclick="DispatchSample()" style="margin: 9px 123px;"><i class="fa fa-sign-in">&nbsp;</i>Dispatch</button>
+				</div>
+			</div>
+			<div class="col-xs-12 form-group">
+				<div class="table-responsive tableFixHead" style="border:1px solid #ccc;margin: 0;height:100%">
+					<table class="table table-bordered" id="tblDispatchInfo">
+						<thead>
+							<tr>
+								<th>Dispatch No.</th>
+								<th style="width:30%">Dispatch Date</th>
+								<th style="width:30%">Total</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

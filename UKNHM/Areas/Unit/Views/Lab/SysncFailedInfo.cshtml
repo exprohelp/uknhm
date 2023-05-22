@@ -1,0 +1,56 @@
+﻿
+@{
+	ViewBag.Title = "SysncFailedInfo";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<script src="~/Areas/Unit/JsModule/SysncFailedInfo.js"></script>
+<style>
+	.tableFixHead {
+		overflow-y: auto;
+		height: 230px;
+	}
+
+		.tableFixHead thead th {
+			position: sticky;
+			top: 0;
+		}
+		.tableFixHead td {
+			height:auto;
+		}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Sysnc Failed Record
+				</div>
+				<div class="panel-body">				
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:500px">								
+								<table class="table table-bordered tableFixHead" id="tblSysncFailedInfo">
+									<thead>
+										<tr>
+											<th style="width: 10%;">Visit No</th>																			
+											<th style="width: 14%;">Patient Name</th>				
+											<th style="width: 10%;">Barcode No</th>				
+											<th style="width: 7%;">Mobile No</th>
+											<th style="width: 7%;">visit Date</th>											
+											<th style="width: 7%;">Investigation</th>											
+											<th style="width: 7%;">Sync Failed</th>											
+											<th style="width: 1%;">CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

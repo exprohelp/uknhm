@@ -1,0 +1,112 @@
+﻿
+@{
+	ViewBag.Title = "DoctorMaster";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.doctorInfo {
+		background: #dcd6d6;
+		padding: 5px;
+		color: #205880;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+
+	.mendatory {
+		color: #ff0000;
+		font-size: 12px;
+	}
+</style>
+<script src="~/Areas/ApplicationResource/JsModule/DoctorMaster.js"></script>
+
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Doctor Master
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8 form-group">
+							<label>Centre</label>
+							<select id="ddlCentre" class="form-control"><option>Select</option></select>
+						</div>
+						<div class="col-md-3 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 10px;" onclick="GetDoctorMaster()"><i class="fa fa-sign-in">&nbsp;</i>Get List</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblDoctorMaster">
+									<thead>
+										<tr>
+											<th>CMD</th>
+											<th>Doctor Name</th>
+											<th>MobileNo</th>
+											<th>Degree</th>
+											<th>Specialization</th>
+											<th>CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<button class="bt-warning" onclick="Clear()" style="color: #272525;border:none"><i class="fa fa-flash">&nbsp;</i>New</button>
+					<span class="pull-right">Add New Doctor Info</span>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<label class="doctorInfo"><span style="display:none" id="centreId"></span><span id="centreName"></span></label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Doctor Name <span class="mendatory">*</span></label>
+							<input type="text" class="form-control" id="txtDoctorName" placeholder="Doctor Name" />
+						</div>
+						<div class="col-md-6 form-group">
+							<label>Degree <span class="mendatory">*</span></label>
+							<select id="ddlDegree" class="form-control"><option>Select</option></select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<label>Specialization <span class="mendatory">*</span></label>
+							<select id="ddlSpecialization" class="form-control"><option>Select</option></select>
+						</div>
+						<div class="col-md-4 form-group">
+							<label>Mobile No.</label>
+							<input type="text" class="form-control" maxlength="10" data-int id="txtMobile" placeholder="Mobile No." />
+						</div>
+						<div class="col-md-2 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSaveDoctor" style="background:#45bb13;padding: 4px 6px;" onclick="InsertDoctor()">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

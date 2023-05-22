@@ -1,0 +1,175 @@
+﻿
+@{
+	ViewBag.Title = "PatientRegister";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/MIS/JsModule/PatientRegister.js"></script>
+<link href="~/Content/magnify/jquery.magnify.min.css" rel="stylesheet" />
+<link href="~/Content/magnify/magnify-white-theme.css" rel="stylesheet" />
+<script src="~/Content/magnify/jquery.magnify.min.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Patient Register
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-3 form-group">
+									<label>From</label>
+									<input type="date" id="txtFrom" style="padding: 0 3px;" class="form-control" />
+								</div>
+								<div class="col-md-3 form-group">
+									<label>To</label>
+									<input type="date" id="txtTo" style="padding: 0 3px;" class="form-control" />
+								</div>
+								<div class="col-md-6 form-group">
+									<label>Centre Name</label>
+									<div class="flex">
+										<select id="ddlCentreName" class="form-control"><option>Select</option></select>
+										<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="GetPatientRegister()">Search</button>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="row">
+								<div class="col-md-4 form-group">
+									<label>Search By</label>
+									<select id="ddlReportType" class="form-control">
+										<option>Mobile No</option>
+										<option>Visit No</option>
+									</select>
+								</div>
+								<div class="col-md-8 form-group">
+									<label>Input</label>
+									<div class="flex">
+										<input type="text" id="txtInput" placeholder="Enter Value" class="form-control bn" style="border-color:#337ab7;border-radius:0" />
+										<button class="btn-flat btn-success" id="btnSave" style="background:#337ab7;padding: 4px;width:33%" onclick="PatientRegisterByVisitNo()">Get</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 form-group">
+						<div class="scroll" style="min-height:420px">
+							<table class="table table-bordered" id="tblPatientRegister">
+								<thead>
+									<tr>
+										<th style="width: 12%;">Visit No</th>
+										<th style="width: 7%;">Visit Date</th>
+										<th style="width: 11%;">Patient Name</th>
+										<th style="width:5%">Age</th>
+										<th style="width:4%">Gender</th>
+										<th style="width:12%">Prescribed By</th>
+										<th style="width:5%;text-align:right">Bill Amt</th>
+										<th style="width:5%">Report</th>
+										<th style="width:5%">Bill/Pres.</th>
+										<th style="width:7%">Appr Date</th>
+										<th style="width:6%;text-align:right">Appr. Amt</th>
+										<th>Investigations</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="modalPatientInfo" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg" style="width: 1100px;">
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top:4%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="btnPresc"></div>
+				@*<button class="btn-flat btn-default" data-toggle="modal" data-target="#modalReject" data-dismiss="modal">Reject</button>*@
+			</div>
+			<div class="modal-body" style="padding: 12px 30px;">
+				<div class="row">
+					<div class="col-md-7 form-group" style="overflow:auto;height:485px">
+						<a data-magnify="gallery" data-src="" data-group="a" href="">
+							<img src="" id="imgPresc" style="width:100%;cursor:zoom-in" />
+						</a>
+					</div>
+					<div class="col-md-5 form-group">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								Patient Test Info
+							</div>
+							<div class="panel-body" style="height:465px">
+								<table class="table table-bordered">
+									<tr>
+										<th style="width:27%">Name Of Unit</th>
+										<th style="width:3%">:</th>
+										<td id="txtUnitName"></td>
+									</tr>
+									<tr>
+										<th style="width:27%">Visit Date</th>
+										<th style="width:3%">:</th>
+										<td id="txtVisitDate"></td>
+									</tr>
+									<tr>
+										<th style="width:27%">Patient Name</th>
+										<th style="width:3%">:</th>
+										<td id="txtPatientName"></td>
+									</tr>
+									<tr>
+										<th style="width:27%">Mobile No.</th>
+										<th style="width:3%">:</th>
+										<td id="txtMobileNo"></td>
+									</tr>
+									<tr>
+										<th style="width:27%">Prescribed By</th>
+										<th style="width:3%">:</th>
+										<td id="txtPrescribedBy"></td>
+									</tr>
+								</table>
+								<div class="scroll">
+									<table class="table table-bordered" id="tblPatientInfo">
+										<thead>
+											<tr>
+												<th style="width: 1%;">S.N.</th>
+												<th>Investigation Name</th>
+												<th style="width: 10%;text-align:right">Total</th>
+												<th style="width: 18%;text-align:right">Disc.(45%)</th>
+												<th style="width: 10%;text-align:right">NetAmount</th>
+											</tr>
+										</thead>
+										<tbody></tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modalReportView" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top:4%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<span3>Patient Report View</span3>
+				@*<button class="btn-flat btn-default" data-toggle="modal" data-target="#modalReject" data-dismiss="modal">Reject</button>*@
+			</div>
+			<div class="modal-body" style="padding: 12px 30px;">
+				<div class="row">
+					<div class="col-md-12 form-group" id="ReportView"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1401
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKNHM", "UKNHM\UKNHM.csproj", "{1CB02363-8D82-4D5C-BC86-5132627F842E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UKNHMApi", "UKNHMApi\UKNHMApi.csproj", "{4157660C-04EE-4BC1-90CF-AE3F868AF2B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CB02363-8D82-4D5C-BC86-5132627F842E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB02363-8D82-4D5C-BC86-5132627F842E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB02363-8D82-4D5C-BC86-5132627F842E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB02363-8D82-4D5C-BC86-5132627F842E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4157660C-04EE-4BC1-90CF-AE3F868AF2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4157660C-04EE-4BC1-90CF-AE3F868AF2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4157660C-04EE-4BC1-90CF-AE3F868AF2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4157660C-04EE-4BC1-90CF-AE3F868AF2B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A3251C7-F9C4-48A8-B6DF-77FA106317DA}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "InvoicePaymentInfo";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/Invoice/JsModule/InvoicePaymentInfo.js"></script>
+<div class="page-box" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Invoice Payment Info
+                    <span class="btn-warning btn-go pull-right" id="txtTotalAmount" style="background: #da850a;border-radius: 5px;"></span>
+                    <span class="btn-warning btn-go pull-right" id="txtTotalRecord" style="background: #da850a;border-radius: 5px;margin-right: 8px;"></span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">                     
+                        <div class="col-md-3 form-group">
+                            <label>From</label>
+                            <input type="date" id="txtFrom" class="form-control" />
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>To</label>
+                            <input type="date" id="txtTo" class="form-control" />
+                        </div>                    
+                        <div class="col-md-4 form-group">                          
+                            <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 10px;margin-top: 26px;" onclick="PaymentInfo('InvoicePaymentInfo:BetweenDate')"><i class="fa fa-sign-in">&nbsp;</i>Get</button>
+                            <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 10px;margin-left:5px" onclick="PaymentInfo('InvoicePaymentInfo:ALL')"><i class="fa fa-sign-in">&nbsp;</i>All Payment</button>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="scroll" style="min-height:420px">
+                                <table class="table table-bordered tableFixHead" id="tblPaymentInfo">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 1%;">SR. No</th>
+                                            <th style="width: 1%;">Receipt No</th>
+                                            <th style="width: 1%;">Reg. Mode</th>
+                                            <th style="width: 11%;">Ref. No</th>
+                                            <th style="width: 22%;">Remark</th>
+                                            <th style="width: 3%;" class="text-right">Amount</th>
+                                            <th style="width: 3%;" class="text-right">TDS Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

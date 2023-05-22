@@ -1,0 +1,91 @@
+﻿
+@{
+	ViewBag.Title = "GenInvoice";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.btnDelay {
+		width: 100%;
+		padding: 0px 10px;
+		border-radius: 0;
+		height: 18px;
+		font-size: 11px;
+	}
+
+	.topHeader {
+		background: #fff;
+		margin: 10px 0px;
+		padding: 8px;
+	}
+
+	#tblRegInfo th, #tblRegInfo td {
+		text-align: center;
+		/*padding: 2px 6px;*/
+		background: #e6f9ff;
+		border-top: 1px solid #90bac7;
+	}
+
+	#tblRegInfo td {
+		font-size: 15px;
+	}
+
+	#tblChandanDelayTest td, #tblITDoseDelayTest td {
+		font-size: 11px !important;
+	}
+
+	#tblRegInfo tr:nth-child(2) > th:nth-last-child(3), #tblRegInfo tr:nth-child(2) > th:nth-last-child(2), #tblRegInfo tr:nth-child(2) > th:nth-last-child(1),
+	#tblRegInfo tbody tr > td:nth-last-child(3), #tblRegInfo tbody tr > td:nth-last-child(2), #tblRegInfo tbody tr > td:nth-last-child(1),
+	#tblRegReport td:nth-last-child(3):not(.bg-group), #tblRegReport td:nth-last-child(2):not(.bg-group), #tblRegReport td:nth-last-child(1):not(.bg-group) {
+		background: #d5d6d8;
+	}
+
+	#tblRegReport td:not(.bg-group) {
+		text-align: center;
+		/*padding: 2px 6px;*/
+		border-top: 1px solid #f4f5e6;
+		font-size: 13px;
+	}
+</style>
+<script src="~/Areas/Invoice/JsModule/GenInvoice.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Generate Invoice
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Select Month</label>
+							<input type="month" id="txtMonth" class="form-control" />
+						</div>
+						<div class="col-md-1 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="CentreWorkToGenInvoice()">Get</button>
+						</div>
+						<hr />
+						<div class="col-md-12 topHeader">
+						<div class="scroll" style="min-height:400px">
+							<table class="table table-bordered" id="tblInvoiceInfo" style="margin:0">
+								<thead>
+									<tr>
+										<th style="width:30%">Centre Name</th>
+										<th>CMS Peding</th>
+										<th Heamoglobin>Net Amount</th>
+										<th style="width: 11%;">CMD</th>
+										<th>Master Invoice No</th>	
+										<th class="text-right">Invoice Amount</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

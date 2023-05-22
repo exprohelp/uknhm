@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "MonthlySaleReport";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+    #tblEQASReport tbody td:nth-last-child(1), #tblEQASReport tbody td:nth-last-child(2), #tblEQASReport tbody td:nth-last-child(3), #tblEQASReport tbody td:nth-last-child(4) {
+        background: #e8f4fb;
+    }
+
+    .btn-report {
+        text-decoration: none !important;
+        border: none;
+        padding: 3px 5px;
+        background-color: #2492b3;
+        border-color: #2492b3;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif !important;
+    }
+
+    table {
+        margin: 10px 0 !important;
+    }
+
+    #tblTotal th, #tblTotal td {
+        border: none;
+        font-size: 12px;
+        white-space: nowrap;
+        padding: 3px;
+    }
+
+    #tblTotal span {
+        background: #d9edf7;
+        font-size: 12px;
+        padding: 0px 3px;
+        border-radius: 2px;
+        border: 1px solid #cbe7ff;
+        width: 95%;
+        display: inline-block;
+    }
+    /*Panel*/
+    .panel-group .panel {
+        border-radius: 0;
+        box-shadow: none;
+        border-color: #f3eeee;
+    }
+
+    .panel-default > .panel-heading {
+        padding: 0px !important;
+        border-radius: 0;
+        color: #212121;
+        background-color: #fff;
+        border-color: #EEEEEE;
+    }
+
+    div.title-total {
+        font-size: 11px;
+        margin: 2px;
+        color: #484848;
+        font-weight: 600;
+        display: inline;
+    }
+
+    .panel-title {
+        font-size: 13px;
+    }
+
+        .panel-title > a {
+            display: block;
+            padding: 10px 5px;
+            text-decoration: none;
+        }
+
+    .more-less {
+        width: 28px;
+        margin: -7px -2px;
+        border: 2px solid #3c3b3b;
+        float: right;
+        color: #585757;
+        padding: 5px 6px;
+        border-radius: 32px;
+        line-height: 13px;
+        height: 28px;
+    }
+
+    .total-panel {
+        float: right;
+        margin-right: 10px;
+    }
+
+    .panel-default > .panel-heading + .panel-collapse > .panel-body {
+        border-top-color: #EEEEEE;
+    }
+
+    .btndown {
+        font-size: 12px;
+        border: none;
+        padding: 0px 4px;
+    }
+
+    #lblTotalTest {
+        float: right;
+        background: #ddd;
+        padding: 1px 5px;
+        border-radius: 2px;
+    }
+</style>
+<script src="~/Areas/MIS/JsModule/MonthlySaleReport.js?1.1"></script>
+<div class="page-box" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Monthly Sale Report                   
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-2 form-group">
+                            <label>District</label>
+                            <select id="ddlDistrict" class="form-control"></select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label>From</label>
+                            <input type="date" id="txtFrom" class="form-control" />
+                        </div>
+                        @*<div class="col-md-3 form-group">
+                            <label>From</label>
+                            <input type="date" id="txtTo" class="form-control" />
+                        </div>*@
+                        <div class="col-md-4 form-group">
+                            <label>To</label>
+                            <div class="flex">
+                                <input type="date" id="txtTo" class="form-control" />
+                                <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 0;width: 70%;margin-left: 2px;" onclick="SaleSummaryMonthly()"><i class="fa fa-sign-in">&nbsp;</i>Get Report</button>
+                                <button class="btn-flat btn-warning" id="btnSave" style="padding: 4px 0;width: 70%;margin-left: 2px;" onclick="DownloadXL()"><i class="fa fa-file-excel-o">&nbsp;</i>Download</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <div class="scroll" style="min-height:410px">
+                                <table class="table table-bordered" id="tblReport">
+                                    <thead></thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

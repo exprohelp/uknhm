@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "NHMOverAllSummary";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+
+    table {
+        overflow: hidden
+    }
+
+        table td:not(.bg-district):not(.bg-hospital):not(:first-child), table th {
+            text-align: center
+        }
+
+    .district {
+        background: #daf6ff;
+    }
+
+    tr.district {
+        border-left: 2px solid #8ecfe4;
+        border-right: 2px solid #8ecfe4;
+    }
+
+    .bg-district {
+        background: #8ecfe4;
+    }
+
+    .hospital {
+        background: #fff;
+    }
+
+    tr.hospital {
+        border-left: 4px solid #ece8ca;
+        border-right: 4px solid #ece8ca;
+    }
+
+    .bg-hospital {
+        background: #ece8ca;
+    }
+
+    .selectrow td {
+        background: #80beff !important;
+    }
+</style>
+<script src="~/Areas/MIS/JsModule/NHMOverAllSummary.js"></script>
+<div class="page-box" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    NHM Overall Summary
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 form-group">
+                            <label>From</label>
+                            <input type="date" id="txtFrom" class="form-control" />
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>To</label>
+                            <input type="date" id="txtTo" class="form-control" />
+                        </div>
+                        <div class="col-md-1 form-group">
+                            <label style="visibility:hidden">Action</label>
+                            <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="SummaryData()">Search</button>
+                        </div>
+                        <div class="col-md-2 form-group">
+                            <label style="visibility:hidden">Action</label>
+                            <button class="btn-flat btn-warning" id="btnXL" style="padding: 4px 20px;" onclick="DownloadXL()"><i class="fa fa-file-excel-o">&nbsp;</i>Download Excel</button>
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <div class="scroll" style="min-height:420px">
+                                <table class="table table-bordered table-custom" id="tblTestAnalysis">
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Total Centres</th>
+                                            <th>CMS Approved</th>
+                                            <th>No. Of Patient</th>
+                                            <th>No. Of Test</th>
+                                            <th>Reports Done</th>
+                                            <th>Reports Pending</th>
+                                            <th>Appr. Done</th>
+                                            <th>Appr. Pending</th>
+                                            <th>Total Amount</th>
+                                            <th>Delay Count</th>
+                                            <th>Paid</th>
+                                            <th>Delay %</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

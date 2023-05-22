@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "PatientRegistration";
+    Layout = "~/Areas/MobileApp/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/MobileApp/JsModule/PatientRegistration.js?v1.1"></script>
+<style>
+    #CampaignDiv {
+        background: #e5f3ff;
+        padding: 4px;
+        border: 1px solid #dfdfdf;
+        border-radius: 2px;
+    }
+
+    .tableFixHead {
+        overflow-y: auto;
+        height: 200px;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+        }
+
+    .btn-info {
+        color: #fff !important;
+        background-color: #866836;
+        border-color: #866836;
+    }
+</style>
+<div class="page-box">
+    <input type="text" id="hidgetotp" style="display:none" />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body" style="height:800px">
+                    <div class="example-box-wrapper">
+                        <div class="row">
+                            <div class="col-xs-12" id="CampaignDiv">
+                                <label class="">Select Campaign</label>
+                                <select class="form-control bn" id="ddlCampaignType" style="border-color: #0ca526;"></select>
+                                <hr />
+                            </div>
+                            <div class="col-xs-5">
+                                <label class="">Mobile No</label>
+                                <input type="number" id="txtMobileNo" maxlength="10" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" class="form-control" placeholder="Mobile No.">
+                            </div>
+                            <div class="col-xs-3">
+                                <label class="">.</label>
+                                <input type="button" id="btnGetOTP" class="form-control btn-info" value="Get OTP" onclick="CheckOTPByPass()" />
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="">OTP</label>
+                                <input type="text" id="txtOTP" class="form-control" />
+                            </div>
+                            <div class="col-xs-2">
+                                <label class="">.</label>
+                                <input type="button" id="btnverify" class="form-control btn-info" value="Verify" onclick="verifyOtp()" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divFormBody" class="Inactive">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="">Type</label>
+                                <select id="ddlPatientType" class="form-control">
+                                    <option selected="selected">OPD</option>
+                                    <option>IPD</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-8">
+                                <label class="">Patient Name</label>
+                                <input type="text" id="txtPatientName" class="form-control" placeholder="Patient Name" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <label class="">Gender</label>
+                                <select id="ddlGender" class="form-control">
+                                    <option selected="selected">Select</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-3">
+                                <label class="">Age</label>
+                                <input type="number" id="txtAge" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" maxlength="2" placeholder="Age">
+                            </div>
+                            <div class="col-xs-5">
+                                <label class="">Age Type</label>
+                                <select id="ddlAgeType" class="form-control">
+                                    <option selected="selected">Year</option>
+                                    <option>Month</option>
+                                    <option>Days</option>
+                                </select>
+                            </div>
+                            <div class="col-xs-12">
+                                <label class="">Prescribed By</label>
+                                <select class="form-control bn" id="ddlDoctor" style="border-color: #0ca526;"></select>
+                                <br /><br />
+                            </div>
+                            <div class="col-xs-12 form-group">
+                                <div class="table-responsive tableFixHead" style="border:1px solid #ccc;margin: 0;">
+                                    <table class="table table-bordered" id="tblTest">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:1%"></th>
+                                                <th><input id="txtSeachTest" style="height:20px" type="text" placeholder="Search By Test Name" /></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 form-group">
+                                <span class="title" style="text-align:right">Selected Test List  <button class="btn-warning bn pull-right" id="btnSubmit" onclick="InsertPatient()" style="width:30%;border: 0;padding:0;margin: 0px 4px 3px 0;">Submit</button></span>
+                                <div class="tableFixHead table-responsive" style="border:1px solid #ccc;margin: 0;">
+                                    <table class="table table-bordered" id="tblSelectedTest">
+                                        <thead>
+                                            <tr>
+                                                <th style="width:1%">cmd</th>
+                                                <th>Test Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

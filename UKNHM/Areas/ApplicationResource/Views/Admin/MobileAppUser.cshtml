@@ -1,0 +1,182 @@
+﻿
+@{
+	ViewBag.Title = "MobileAppUser";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	#txtUserId{
+		text-transform:uppercase;
+	}
+	table td, th {
+		font-size: 12px !important;
+		padding: 0px 3px;
+	}
+
+	.bn {
+		border-radius: 0px;
+		border: 1px solid #339ff9;
+	}
+
+	.tableFixHead {
+		overflow-y: auto;
+		height: 200px;
+	}
+
+		.tableFixHead thead th {
+			position: sticky;
+			top: 0;
+		}
+
+	th {
+		color: white;
+		background: #339ff9;
+	}
+
+	.master-title {
+		background: #ffdfdf;
+		padding: 1px 7px;
+	}
+
+	.list-title {
+		width: 100%;
+		padding: 1px 10px;
+		color: #bf7070;
+		display: block;
+		background: antiquewhite;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		border: 1px solid #adc8f3;
+		padding: 5px;
+		border-radius: 4px;
+		background: #d9edf7;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			width: 90%;
+			display: block;
+			padding: 10px 2px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 25px;
+		margin: -7px 1px;
+		border: 2px solid #e6e4e4;
+		float: left;
+		color: #33abb7;
+		padding: 5px 4px;
+		border-radius: 40px;
+		line-height: 10px;
+		height: 25px;
+	}
+
+	.assign {
+		cursor: pointer;
+		margin: -31px 5px;
+		float: right;
+		color: #ffffff !important;
+		padding: 5px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.panel-info {
+		border-color: #ffecd2;
+	}
+</style>
+<script src="~/Areas/ApplicationResource/JsModule/MobileAppUser.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					MobileApp User Master
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-7">
+									<label>User Type</label>
+									<select id="ddlCentre" onchange="GetUserInfo('GetMobileAppUserByCentreId')" class="form-control"></select>
+								</div>
+								<div class="col-md-5">
+									<label>User Id <span class="mendat">*</span></label>
+									<div class="flex">
+										<input type="text" id="txtUserId" class="form-control" autocomplete="off" placeholder="UserId" />
+										<button class="btn-warning bn" id="btnGetEmp" style="width:55%;border: none;margin-left:2px" onclick="GetChandanEmpInfo()">Get Emp</button>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<label>User Name <span class="mendat">*</span></label>
+									<div class="flex">
+										<input type="text" id="txtUserName" class=" form-control" autocomplete="off" placeholder="User Name" />
+										<button class="btn-success bn" onclick="InsertUser()" style="width:20%;border: none;margin-left:2px"><i class="fa fa-sign-in">&nbsp;</i>Submit</button>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-8 form-group">
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="scroll" style="min-height:340px">
+										<table class="table table-bordered" id="tblUserInfo">
+											<thead>
+												<tr>												
+													<th style="width:18%">User ID</th>
+													<th>User Name</th>
+													<th>Alloted Centrer</th>
+													<th style="width:1%">CMD</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

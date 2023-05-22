@@ -1,0 +1,142 @@
+﻿
+@{
+	ViewBag.Title = "ITDoseBulkSync";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<style>
+	body {
+		font-family: 'Roboto', sans-serif !important;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	#tblTotal th, #tblTotal td {
+		border: none;
+		font-size: 12px;
+		white-space: nowrap;
+		padding: 3px;
+	}
+
+	#tblTotal span {
+		background: #d9edf7;
+		font-size: 12px;
+		padding: 0px 3px;
+		border-radius: 2px;
+		border: 1px solid #cbe7ff;
+		width: 95%;
+		display: inline-block;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			display: block;
+			padding: 10px 5px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 28px;
+		margin: -7px -2px;
+		border: 2px solid #3c3b3b;
+		float: right;
+		color: #585757;
+		padding: 5px 6px;
+		border-radius: 32px;
+		line-height: 13px;
+		height: 28px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+</style>
+
+<script src="~/Areas/Unit/JsModule/ITDoseBulkSync.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					ITDose Bulk Sync
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-2 form-group">
+							<label>From</label>
+							<input type="date" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-2 form-group">
+							<label>To</label>
+							<input type="date" id="txtTo" class="form-control" />
+						</div>
+						<div class="col-md-1 form-group">
+							<label style="visibility:hidden">Action</label>
+							<span class="btn-flat btn-success" id="btnSave" style="width: max-content;padding:5px;background:#2c9e4f;display:block" onclick="ITDoseChandanBulkSync()">Sync Data</span>
+						</div>
+						<div class="col-md-6 form-group">							
+							<span class="btn-flat btn-warning pull-right" id="btnUpdate" style="width: max-content;padding:5px;background:#e29f2b;margin-top: 25px;display:none" onclick="BulkMarkApprove()"><i class="fa fa-refresh">&nbsp;</i>Update</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblMisMatchRecord">
+									<thead>
+										<tr>
+											<th style="width: 14%;">Visit No</th>
+											<th>Patient Name</th>
+											<th>Test Name</th>
+											<th style="width: 14%;">Approved Date</th>
+											<th>Approved By</th>
+											<th  style="width: 18%;">Approved By Lab</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

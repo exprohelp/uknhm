@@ -1,0 +1,122 @@
+﻿
+@{
+	ViewBag.Title = "CancelReport";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/MIS/JsModule/CancelReport.js"></script>
+<style>
+	.UploadSection {
+		background: url(https://exprohelp.com/UKNHM/Content/img/upload.png) no-repeat center;
+		height: 260px;
+		margin-top: 45px;
+	}
+
+	#btnFileUpload {
+		margin: 142px 0 56px 225px;
+	}
+
+	.bg-danger {
+		background-color: #ffbebe;
+	}
+
+	#patientInfo .select2-container .select2-selection--single {
+		box-sizing: border-box;
+		cursor: pointer;
+		display: block;
+		height: 23px;
+		user-select: none;
+		-webkit-user-select: none;
+	}
+
+	#tblPatientInfo .form-control {
+		height: 22px;
+	}
+
+	.IsCancel {
+		background: #ff9090;
+	}
+
+	.newTest {
+		background: #d6efd7;
+	}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Cancellation Summary
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label>District</label>
+                                    <select id="ddlDistrict" class="form-control"></select>
+                                </div>
+                                <div class="col-md-5 form-group">
+                                    <label>From</label>
+                                    <input type="date" id="txtFrom" class="form-control" />
+                                </div>
+                                <div class="col-md-7 form-group">
+                                    <label>To</label>
+                                    <div class="flex">
+                                        <input type="date" id="txtTo" class="form-control" />
+                                        <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="CancellationSummary()">Get</button>
+                                    </div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:420px">
+								<table class="table table-bordered" id="tblCancellationSummary">
+									<thead>
+										<tr>
+											<th style="width: 10%;">centre_name</th>
+											<th style="width: 5%;">PatientCount</th>
+											<th style="width: 11%;">TestCount</th>
+											<th style="width: 1%;">CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Cancellation Detail
+				</div>
+				<div class="panel-body">				
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="max-height:480px;min-height:480px">
+								<table class="table table-bordered" id="tblCancellationDetail">
+									<thead>
+										<tr>
+											<th>Visit Date</th>
+											<th>Test Name</th>
+											<th>Net Amount</th>
+											<th>Cancel Date</th>
+											<th>Cancel Remark</th>
+											<th>Cancel By</th>									
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,156 @@
+﻿
+@{
+	ViewBag.Title = "ProcessingLabTat";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	body {
+		font-family: 'Roboto', sans-serif !important;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	#tblTotal th, #tblTotal td {
+		border: none;
+		font-size: 12px;
+		white-space: nowrap;
+		padding: 3px;
+	}
+
+	#tblTotal span {
+		background: #d9edf7;
+		font-size: 12px;
+		padding: 0px 3px;
+		border-radius: 2px;
+		border: 1px solid #cbe7ff;
+		width: 95%;
+		display: inline-block;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			display: block;
+			padding: 10px 5px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 28px;
+		margin: -7px -2px;
+		border: 2px solid #3c3b3b;
+		float: right;
+		color: #585757;
+		padding: 5px 6px;
+		border-radius: 32px;
+		line-height: 13px;
+		height: 28px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+</style>
+
+<script src="~/Areas/Unit/JsModule/ProcessingLabTat.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Processing Lab Tat
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-2 form-group">
+							<label>Type</label>
+							<select id="ddlType" class="form-control">
+								<option>Pending</option>
+								<option>Approved</option>
+								<option>Delay</option>
+							</select>
+						</div>
+						<div class="col-md-3 form-group">
+							<label>From</label>
+							<input type="datetime-local" id="txtFrom" class="form-control" style="padding: 5px;" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>To</label>
+							<input type="datetime-local" id="txtTo" class="form-control" style="padding: 5px;" />
+						</div>
+						<div class="col-md-4 form-group">
+							<label>Lab Name</label>
+							<div class="flex">
+								<select id="ddlLab" class="form-control"></select>
+							</div>
+						</div>
+						<div class="col-md-1 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="ProcessingLabTAT()">Search</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblTatReport">
+									<thead>
+										<tr>
+											<th>Hospital Name</th>
+											<th>Hub Name</th>
+											<th>Test Name</th>
+											<th>Reg. Date</th>
+											<th>Logistic Receive Date</th>
+											<th>Delivery Date</th>
+											<th>Approved Date</th>
+											<th>Tat(Hrs)</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

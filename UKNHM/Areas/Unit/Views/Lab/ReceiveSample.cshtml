@@ -1,0 +1,104 @@
+﻿
+@{
+	ViewBag.Title = "ReceiveSample";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/Unit/JsModule/ReceiveSample.js"></script>
+<style>
+	tr.received td {
+		background: #c1f3ad;
+	}
+	.doctorInfo {
+		background: #dcd6d6;
+		padding: 5px;
+		color: #205880;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+
+	.mendatory {
+		color: #ff0000;
+		font-size: 12px;
+	}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Sample Info
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-5 form-group">
+							<label>From</label>
+							<input type="date" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-5 form-group">
+							<label>To</label>
+							<input type="date" id="txtTo" class="form-control" />
+						</div>
+						<div class="col-md-2 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 10px;" onclick="GetSampleForDispatch()"><i class="fa fa-sign-in">&nbsp;</i>Get</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblSampleInfo">
+									<thead>
+										<tr>
+											<th>Dispatch No</th>
+											<th>Dispatch Date</th>
+											<th class="text-right">NOS</th>										
+											<th>CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span>Patient Test Info</span>
+					<button class="btn-success pull-right" style="border:none" onclick="ReceiveByDispatchNo()"><i class="fa fa-sign-in">&nbsp;</i>Receive All</button>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:472px">
+								<table class="table table-bordered" id="tblTestInfo">
+									<thead>
+										<tr>
+											<th style="width:22%">Visit No</th>
+											<th style="width:22%">Patient Name</th>
+											<th>Test Name</th>
+											<th>Barcode No</th>											
+											<th style="width:20%">Scan Barcode</th>											
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>			
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

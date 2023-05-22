@@ -1,0 +1,77 @@
+﻿
+@{
+	ViewBag.Title = "CentreAllotment";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.scroll {
+		border: 1px solid #2492b3;
+		margin: 10px 0 !important;
+	}
+	.group{
+		background:#ddd;
+	}
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+</style>
+<script src="~/Areas/ApplicationResource/JsModule/CentreAllotment.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Centre Allotment
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-4 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblRole">
+									<thead>
+										<tr>										
+											<th>Role Name</th>
+											<th style="width:1%">CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-md-4 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblUserInfo">
+									<thead>
+										<tr>
+											<th style="width:1%"><input type="checkbox" checked /></th>
+											<th>Employee Name</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-md-4 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblCentre">
+									<thead>
+										<tr>
+											<th style="width:1%"><input type="checkbox" checked /></th>
+											<th>Centre Name</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+							<button class="btn-success pull-right" onclick="AllotCentreToUserInBulk()"><i class="fa fa-sign-in">&nbsp;</i>Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

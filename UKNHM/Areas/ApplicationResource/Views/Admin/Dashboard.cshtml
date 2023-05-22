@@ -1,0 +1,112 @@
+﻿
+@{
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.btn-float2 {
+		cursor: pointer;
+		z-index: 1;
+		bottom: 0px;
+		right: 18%;
+		position: fixed;
+		float: right;
+		background: #00902c;
+		color: #fff;
+		padding: 0px 16px;
+	}
+
+	.btn-float {
+		cursor: pointer;
+		z-index: 1;
+		bottom: 0px;
+		right: 1%;
+		position: fixed;
+		float: right;
+		background: #ff0000;
+		color: #fff;
+		padding: 0px 16px;
+	}
+</style>
+<script src="~/Areas/Panel/JsModule/Admin/Dashboard.js"></script>
+<div class="btn-float2 text-upper" onclick="DeleteDocument(this)"><h4 class="text-upper">Delete Document</h4></div>
+<div class="btn-float text-upper" onclick="DeleteRecord(this)"><h4 class="text-upper">Delete Pending Record</h4></div>
+<h2 class="page-heading">Dashboard<hr /></h2>
+<div class="page-box">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="block" style="background:#ff006e">
+				<a href="AddRetailer">
+					<h3 class="text-center" id="TotalRetailer">00</h3>
+					<h3 class="text-center">Total Retailer</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#2961ff">
+				<a href="AddEmployee">
+					<h3 class="text-center" id="TotalEmployee">00</h3>
+					<h3 class="text-center">Total Employee</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#23b34f">
+				<a href="AddDistributor">
+					<h3 class="text-center" id="TotalDistributor">00</h3>
+					<h3 class="text-center">Total Distributor</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#f300bf">
+				<a href="AddPartner">
+					<h3 class="text-center" id="TotalPartner">00</h3>
+					<h3 class="text-center">Total Partner</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#7d7979">
+				<a href="ManageWallet">
+					<h3 class="text-center" id="TotalWallet">00</h3>
+					<h3 class="text-center">Total Wallet</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#bda603">
+				<a href="AckGeneration">
+					<h3 class="text-center" id="TotalReceived">00</h3>
+					<h3 class="text-center">Total Received</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#118a6e">
+				<a href="#">
+					<h3 class="text-center" id="TotalProcessing">00</h3>
+					<h3 class="text-center">Total Processing</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#c13d76">
+				<a href="#">
+					<h3 class="text-center" id="TotalRejected">00</h3>
+					<h3 class="text-center">Total Rejected</h3>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block" style="background:#ff5722">
+				<a href="PanList">
+					<h3 class="text-center" id="TotalCompleted">00</h3>
+					<h3 class="text-center">Total Completed</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+

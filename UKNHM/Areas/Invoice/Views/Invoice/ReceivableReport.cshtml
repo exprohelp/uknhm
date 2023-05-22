@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewBag.Title = "ReceivableReport";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<script src="~/Areas/Invoice/JsModule/ReceivableReport.js"></script>
+<style>
+    .bg-danger {
+        background-color: #ffbebe;
+    }
+
+    .gbtn {
+        background: #eb9800;
+        padding: 2px 7px;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 2px;
+    }
+
+    #tblReceivableReport tbody td:nth-last-child(1), #tblReceivableReport tbody td:nth-last-child(2), #tblReceivableReport tbody td:nth-last-child(3) {
+        background: #e1d2bf !important;
+        color: #333 !important;
+    }
+
+    #tblCenterWiseRecord tbody td:nth-last-child(1), #tblCenterWiseRecord tbody td:nth-last-child(2), #tblCenterWiseRecord tbody td:nth-last-child(3) {
+        background: #e1d2bf !important;
+        color: #333 !important;
+    }
+</style>
+<div class="page-box" style="margin-top:10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Receivable Report
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-8 form-group">
+                                        <label>Choose Finance Commision</label>
+                                        <div class="flex">                                            
+                                            <select id="ddlReportBy" class="form-control" style="border-color:#f60">
+                                                <option value="ALL">ALL</option>
+                                                <option value="Only15thCom">15th Finance Commission</option>
+                                                <option value="Without15thCom">NHM</option>
+                                            </select>
+                                            <button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 0;width:45%" onclick="ReceivableReport()"><i class="fa fa-sign-in">&nbsp;</i>Get Record</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="row">
+                        <input type="file" id="FileUpload" style="display:none" />
+                        <div class="col-md-12 form-group">
+                            <div class="scroll" style="min-height:520px">
+                                <table class="table table-bordered" id="tblReceivableReport">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10%;text-align:right">Invoice Type</th>
+                                            <th style="width: 10%;text-align:right">Invoice Amount</th>
+                                            <th style="width: 10%;text-align:right">EQAS Deduc.</th>
+                                            <th style="width: 10%;text-align:right">Payable Amount</th>
+                                            <th style="width: 10%;text-align:right">Paid Amount</th>
+                                            <th style="width: 10%;text-align:right">Invoice Balance</th>
+                                            <th style="width: 10%;text-align:right">Pending Invoice</th>
+                                            <th style="width: 10%;text-align:right">OverAll Business</th>
+                                            <th style="width: 10%;text-align:right">Overall Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalCenterWiseRecord" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" style="width:1200px;">
+        <!-- Modal content-->
+        <div class="modal-content" style="margin-top:0%;">
+            <div class="modal-header">
+                <span id="txtDistrict" class="text-white"></span>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12 form-group">
+                    <div class="scroll">
+                        <table class="table table-bordered" id="tblCenterWiseRecord" style="height:500px;overflow:auto">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10%;">Invoice Type</th>
+                                    <th style="width: 10%;text-align:right">Invoice Amount</th>
+                                    <th style="width: 10%;text-align:right">EQAS Deduc.</th>
+                                    <th style="width: 10%;text-align:right">Payable Amount</th>
+                                    <th style="width: 10%;text-align:right">Paid Amount</th>
+                                    <th style="width: 10%;text-align:right">Invoice Balance</th>
+                                    <th style="width: 10%;text-align:right">Pending Invoice</th>
+                                    <th style="width: 10%;text-align:right">OverAll Business</th>
+                                    <th style="width: 10%;text-align:right">Overall Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

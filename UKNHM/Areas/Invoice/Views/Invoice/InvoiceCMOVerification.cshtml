@@ -1,0 +1,107 @@
+﻿
+@{
+	ViewBag.Title = "InvoiceCMOVerification";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<script src="~/Areas/Invoice/JsModule/InvoiceCMOVerification.js?v1.1"></script>
+<style>
+	.bg-danger {
+		background-color: #ffbebe;
+	}
+</style>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Invoice CMO Verification
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-5 form-group">
+									<label>Invoice Month</label>
+									<div class="flex">
+										<input type="month" id="txtFrom" class="form-control" />
+										<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="InvoiceList()">Submit</button>
+									</div>
+								</div>
+								@*<div class="col-md-7 form-group">
+									<label>Centre Name</label>
+									<div class="flex">
+										<select id="ddlCentreName" class="form-control"></select>
+										<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="InvoiceList('InvoiceListOfCentre')">Submit</button>
+									</div>
+								</div>*@
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<input type="file" id="FileUpload" style="display:none" />
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:420px">
+								<table class="table table-bordered" id="tblInvoiceSummary">
+									<thead>
+										<tr>
+											<th style="width: 10%;">Invoice Month</th>
+											<th style="width: 33%;white-space:nowrap">Invoice No</th>
+											<th style="width: 11%;">Total Amount</th>
+											<th style="width: 11%;">Total Discount</th>
+											<th style="width: 14%;text-align:right">Net Amount</th>
+											<th style="width: 20%;">Invoice Amount</th>
+											<th style="width: 5%;">EQAS Deduc.</th>
+											<th style="width:12%">Amount To be Paid</th>
+											<th style="width:1%">CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="modalAbnormal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg" style="width: 1245px;">
+		<!-- Modal content-->
+		<div class="modal-content" style="margin-top:0%;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<div class="btnPresc"></div>
+			</div>
+			<div class="panel-body">
+				<div class="col-md-12 form-group">
+					<div class="scroll" style="min-height:500px">
+						<table class="table table-bordered" id="tblEQASAbnormalReport">
+							<thead>
+								<tr>
+									<th style="width:30%">Observation Name</th>
+									<th style="width:10%;text-align:center" colspan="3">Chandan</th>
+									<th style="width:10%;text-align:center" colspan="6">EQAS <button onclick="PrintPDF()" class="btn btn-warning btn-xs pull-right"><i class="fa fa-print">&nbsp;</i>Print Report</button></th>
+								</tr>
+								<tr>
+									<th style="width:30%">Observation Name</th>
+									<th style="width:6%">Reading</th>
+									<th style="width: 7%;">Unit</th>
+									<th style="width: 10%;">Ref-Range</th>
+									<th style="width: 15%;">Lab Name</th>
+									<th style="width: 5%;">Reading</th>
+									<th style="width: 7%;">Unit</th>
+									<th style="width: 10%;">Ref. Range</th>
+									<th style="width: 10%;">Status</th>								
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

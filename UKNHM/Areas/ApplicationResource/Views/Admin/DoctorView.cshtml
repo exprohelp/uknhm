@@ -1,0 +1,71 @@
+﻿
+@{
+	ViewBag.Title = "DoctorView";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.doctorInfo {
+		background: #dcd6d6;
+		padding: 5px;
+		color: #205880;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	.btndown {
+		font-size: 12px;
+		border: none;
+		padding: 0px 4px;
+	}
+
+	.mendatory {
+		color: #ff0000;
+		font-size: 12px;
+	}
+</style>
+<script src="~/Areas/ApplicationResource/JsModule/DoctorView.js"></script>
+
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Doctor View
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-8 form-group">
+							<label>Centre</label>
+							<select id="ddlCentre" class="form-control"><option>Select</option></select>
+						</div>
+						<div class="col-md-3 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 10px;" onclick="GetDoctorMaster()"><i class="fa fa-sign-in">&nbsp;</i>Get List</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:410px">
+								<table class="table table-bordered" id="tblDoctorMaster">
+									<thead>
+										<tr>
+											<th>Doctor Name</th>
+											<th>MobileNo</th>
+											<th>Degree</th>
+											<th>Specialization</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "MultiOptions";
+    Layout = "~/Areas/MobileApp/Views/Shared/_layout.cshtml";
+}
+<style>
+    #ddlPatientList {
+        margin: 10px;
+        width: 94%;
+    }
+
+    body {
+        background-color: #ececec;
+    }
+
+    .report {
+        border-radius: 3px;
+        box-shadow: 1px 0px 4px #e0e0e0;
+        cursor: pointer;
+        border: 1px solid #e6e6e6;
+        background: #fff;
+        padding: 9px 0px;
+        display: flex;
+        width: 94%;
+        margin-bottom: 7px;
+        margin: 10px;
+    }
+
+    .report-left {
+        border: 1px solid #a9e0ff;
+        margin: 0 10px;
+        width: 90px;
+        background: #ececec;
+        padding: 15px 30px;
+    }
+
+        .report-left .fa {
+            font-size: 25px;
+            color: #3eb1f3;
+        }
+
+    .report-right {
+        width: 75%;
+    }
+
+    .report-title {
+        font-size: 12px;
+        font-weight: 500;
+        color: #000;
+    }
+
+    .report-des {
+        font-size: 10px;
+        color: #999999;
+    }
+
+    .report-btn {
+        width: 65px;
+        padding: 0px 14px;
+        font-size: 13px;
+        border: none;
+        box-shadow: none;
+    }
+
+    .card {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+
+    .visitnow {
+        padding: 0px 19px 5px 19px;
+        margin-top: 8px;
+    }
+
+    .card-body {
+        BACKGROUND-COLOR: #d8d5d5;
+        height: 106px;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem;
+    }
+
+    .FixedUserInfo {
+        position: fixed;
+        bottom: 0;
+        margin: 9px;
+        width: 90%;
+    }   
+</style>
+
+<script>
+    $(document).ready(function () {
+        FillCurrentDate('txtAttCurrDate');
+        var centreId = query()['CentreId'];
+        var loginId = query()['LoginId'].toUpperCase();
+        sessionStorage.setItem('UserId', loginId);
+        var EmpCode = ['CPL-00233', 'CHCL-00631', 'CHCL-00009'];
+        var EmpCodeForNHMUser = ['CPL-00233', 'CHCL-00631', 'CHCL-00009', 'CHCL-00536', 'CHCL-00813'];
+        AttInfobyCode(query()['LoginId']);
+        if ($.inArray(loginId, EmpCodeForNHMUser) > 0) {
+            $('#NHMUserMaster').show();
+        }
+        else {
+            $('#NHMUserMaster').hide();
+        }
+        if (typeof centreId === 'undefind') {
+            alert('Access Denied for this Centre.')
+            $('body').css('pointer-events', 'none');
+            $("#txtCollectionCenter").text('Centre Is not Alloted.');
+        }
+        else {
+            if ($.inArray(loginId, EmpCode) > 0) {
+                $('#ITWork').show();
+            }
+            else {
+                $('#ITWork').hide();
+            }
+            GetCenter(centreId);
+        }
+    });
+    function GetCenter(centreId) {
+        sessionStorage.setItem('centreId', '');
+        $("#txtCollectionCenter").text('');
+        var url = config.baseUrl + "/api/MobileApp/MobileApp_Queries";
+        var objBO = {};
+        objBO.LabCode = '-';
+        objBO.CentreId = centreId;
+        objBO.VisitNo = '-';
+        objBO.Prm1 = '-';
+        objBO.from = '1900/01/01';
+        objBO.to = '1900/01/01';
+        objBO.login_id = Active.userId;
+        objBO.Logic = "GetCenterInfoByCentreId";
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: JSON.stringify(objBO),
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                if (data.ResultSet.Table.length > 0) {
+                    $.each(data.ResultSet.Table, function (key, value) {
+                        sessionStorage.setItem('centreId', value.centreId);
+                        $("#txtCollectionCenter").text(value.centre_name);
+                    });
+                }
+                else {
+                    alert('Please Contact Admin. Centre Not Authorised.');
+                    $('body').css('pointer-events', 'none');
+                    $("#txtCollectionCenter").text('Centre Is not Alloted.');
+                }
+            },
+            //complete: function (response) {
+            //	$('#ddlCollectionCenter').map(function () {
+            //		if ($(this).val() =='UK001') {
+            //			$('#ddlCollectionCenter').prop('selectedIndex', '' + $(this).index() + '').change();
+            //		}
+            //	});
+            //},
+            error: function (response) {
+                alert('Server Error...!');
+            }
+        });
+    }
+    function AttInfobyCode(empCode) {
+        var url = config.baseUrl + "/api/MobileApp/HRQueries";
+        var objBO = {};
+        objBO.unit_id = '-';
+        objBO.comp_id = '-';
+        objBO.logic = 'AttInfobyCode';
+        objBO.prm_1 = '-';
+        objBO.prm_2 = '-';
+        objBO.prm_3 = '-';
+        objBO.loginid = empCode;
+        objBO.login_id = '-';
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: JSON.stringify(objBO),
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                if (data.ResultSet.Table.length > 0) {
+                    $.each(data.ResultSet.Table, function (key, value) {
+                        $("#txtAttEmpName").text(value.emp_name);
+                        $("#txtAttStatus").text(value.attStatus);
+                        $("#txtInOutTime").text(value.InOutTime);
+                        
+                    });
+                }
+            },
+            error: function (response) {
+                alert('Server Error...!');
+            }
+        });
+    }
+    function InsAttReg(empCode) {
+        if (confirm('Are you sure?')) {
+
+
+        }
+        var url = config.baseUrl + "/api/MobileApp/Ins_Att_Reg";
+        var objBO = {};
+        objBO.inp_date = '1900-01-01';
+        objBO.emp_code = empCode;
+        objBO.status = 'Present';
+        objBO.Mgrcode = 'NHM-App';      
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: JSON.stringify(objBO),
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {                
+                alert(data);
+            },
+            error: function (response) {
+                alert('Server Error...!');
+            }
+        });
+    }
+    function OpenReportUrl(link) {
+        window.location.href = link;
+    }
+</script>
+<div id="page-content" style="background: #ececec;margin-bottom: 100px;">
+    <div class="report" onclick="OpenReportUrl('PatientRegister')">
+        <div class="report-left">
+            <i class="fa fa-registered">&nbsp;</i>
+        </div>
+        <div class="report-right">
+            <span class="report-title">Patient Register</span><br />
+            <span class="report-des">Patient Report Of Centers.</span>
+        </div>
+    </div>
+    <div class="report" id="DeltaReport" onclick="OpenReportUrl('PatientReport')">
+        <div class="report-left">
+            <i class="fa fa-file">&nbsp;</i>
+        </div>
+        <div class="report-right">
+            <span class="report-title">Patient Reports</span><br />
+            <span class="report-des">Patient Report Of Centers.</span>
+        </div>
+    </div>
+    <div class="report" id="DeltaReport" onclick="OpenReportUrl('ViewPrescription')">
+        <div class="report-left">
+            <i class="fa fa-eye">&nbsp;</i>
+        </div>
+        <div class="report-right">
+            <span class="report-title">View Prescription</span><br />
+            <span class="report-des">View Scaned Prescription.</span>
+        </div>
+    </div>
+    <div class="report" id="DispatchSample" onclick="OpenReportUrl('DispatchSample')">
+        <div class="report-left">
+            <i class="fa fa-sign-in">&nbsp;</i>
+        </div>
+        <div class="report-right">
+            <span class="report-title">Dispatch Sample</span><br />
+            <span class="report-des">Proceed For Dispatch Sample.</span>
+        </div>
+    </div>
+    <div class="report" id="NHMUserMaster" onclick="OpenReportUrl('NHMUserMaster?LoginId=' + query()['LoginId'])">
+        <div class="report-left">
+            <i class="fa fa-gear">&nbsp;</i>
+        </div>
+        <div class="report-right">
+            <span class="report-title">NHM User Master</span><br />
+            <span class="report-des">Manage NHM User Master.</span>
+        </div>
+    </div>
+    <div class="report" id="ITWork" onclick="OpenReportUrl('OTPByPass')">
+        <div class="report-left">
+            <i class="fa fa-gear">&nbsp;</i>
+        </div>
+        <div class="report-right">
+            <span class="report-title">IT Work Master</span><br />
+            <span class="report-des">Manage IT Works.</span>
+        </div>
+    </div>
+</div>
+@*<div class="report FixedUserInfo" id="UserAtt">
+    <div class="report-left" onclick="InsAttReg(''+query()['LoginId']+'')">
+        <i class="fa fa-p">IN</i>
+    </div>
+    <div class="report-right">
+        <span style="width:100%" class="report-title" id="txtAttEmpName">-</span><br />
+        <span class="report-des" id="txtAttStatus">-</span>
+        <span class="report-des" id="txtInOutTime">-</span>
+        <input type="hidden" id="txtAttCurrDate" />
+    </div>
+    <div class="report-left" onclick="InsAttReg(''+query()['LoginId']+'')">
+        <i class="fa fa-p">OUT</i> 
+    </div>
+<br /><br />
+</div>*@
+

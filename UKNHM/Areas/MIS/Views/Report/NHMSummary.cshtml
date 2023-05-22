@@ -1,0 +1,99 @@
+﻿
+@{
+	ViewBag.Title = "NHMSummary";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	.topHeader th,.topHeader td {
+		margin-bottom: 10px;		
+		text-align:center;
+		/*background: #c4dbff;
+		padding: 8px;*/
+	}
+
+	/*#tblRegInfo th, #tblRegInfo td {
+		text-align: center;
+		padding: 2px 6px;
+		background: #c4dbff;
+		border-top: 1px solid #c4dbff;
+		font-size: 13px;
+	}*/
+
+	#tblRegInfo td {
+		font-size: 15px;
+	}
+
+	#tblRegReport td:not(.bg-group), #tblRegReport th{
+		text-align: center;
+		padding: 2px 6px;
+		border-top: 1px solid #f4f5e6;
+		font-size: 13px;
+	}
+</style>
+<script src="~/Areas/MIS/JsModule/NHMSummary.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					NHM Summary
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>From</label>
+							<input type="date" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-3 form-group">
+							<label>To</label>
+							<input type="date" id="txtTo" class="form-control" />
+						</div>
+						<div class="col-md-5">
+							<label>Centre</label>
+							<select id="ddlCentre" class="form-control"></select>
+						</div>
+						<div class="col-md-1 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSave" style="background:#45bb13;padding: 4px 20px;" onclick="DailyRegInfo()">Get</button>
+						</div>
+						<hr />
+						<div class="col-md-12 topHeader">
+							<table class="table table-bordered" id="tblRegInfo" style="margin:0">
+								<thead>
+									<tr>
+										<th>Region Name</th>
+										<th>Patient Count</th>
+										<th>Test Count</th>
+										<th>Net Amount</th>
+										<th>NHM Appr Pend</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 form-group">
+							<div class="scroll" style="min-height:340px">
+								<table class="table table-bordered" id="tblRegReport">
+									<thead style="visibility:collapse">
+										<tr>
+											<th>Region Name</th>
+											<th>Patient Count</th>
+											<th>Test Count</th>
+											<th>Net Amount</th>
+											<th>NHM Appr Pend</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

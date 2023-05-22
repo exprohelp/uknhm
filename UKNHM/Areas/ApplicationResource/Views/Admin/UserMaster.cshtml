@@ -1,0 +1,272 @@
+﻿
+@{
+	ViewBag.Title = "UserMaster";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	table td, th {
+		font-size: 12px !important;
+		padding: 0px 3px;
+	}
+
+	.bn {
+		border-radius: 0px;
+		border: 1px solid #339ff9;
+	}
+
+	.tableFixHead {
+		overflow-y: auto;
+		height: 200px;
+	}
+
+		.tableFixHead thead th {
+			position: sticky;
+			top: 0;
+		}
+
+	th {
+		color: white;
+		background: #339ff9;
+	}
+
+	.master-title {
+		background: #ffdfdf;
+		padding: 1px 7px;
+	}
+
+	.list-title {
+		width: 100%;
+		padding: 1px 10px;
+		color: #bf7070;
+		display: block;
+		background: antiquewhite;
+	}
+	/*Panel*/
+	.panel-group .panel {
+		border-radius: 0;
+		box-shadow: none;
+		border-color: #f3eeee;
+	}
+
+	.panel-default > .panel-heading {
+		padding: 0px !important;
+		border-radius: 0;
+		color: #212121;
+		background-color: #fff;
+		border-color: #EEEEEE;
+	}
+
+	div.title-total {
+		font-size: 11px;
+		margin: 2px;
+		border: 1px solid #adc8f3;
+		padding: 5px;
+		border-radius: 4px;
+		background: #d9edf7;
+		color: #484848;
+		font-weight: 600;
+		display: inline;
+	}
+
+	.panel-title {
+		font-size: 13px;
+	}
+
+		.panel-title > a {
+			width: 90%;
+			display: block;
+			padding: 10px 2px;
+			text-decoration: none;
+		}
+
+	.more-less {
+		width: 25px;
+		margin: -7px 1px;
+		border: 2px solid #e6e4e4;
+		float: left;
+		color: #33abb7;
+		padding: 5px 4px;
+		border-radius: 40px;
+		line-height: 10px;
+		height: 25px;
+	}
+
+	.assign {
+		cursor: pointer;
+		margin: -31px 5px;
+		float: right;
+		color: #ffffff !important;
+		padding: 5px;
+	}
+
+	.total-panel {
+		float: right;
+		margin-right: 10px;
+	}
+
+	.panel-default > .panel-heading + .panel-collapse > .panel-body {
+		border-top-color: #EEEEEE;
+	}
+
+	.panel-info {
+		border-color: #ffecd2;
+	}
+</style>
+<script src="~/Areas/ApplicationResource/JsModule/UserMaster.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-5">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					User Master
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-4">
+									<label>User Type</label>
+									<select id="ddlUserType" class="form-control">
+										<option>NHM</option>
+										<option>Chandan</option>
+									</select>
+								</div>
+								<div class="col-md-8">
+									<label>User Id <span class="mendat">*</span></label>
+									<div class="flex">
+										<input type="text" id="txtUserId" class=" form-control" disabled autocomplete="off" placeholder="UserId" />
+										<button class="btn-warning bn" id="btnAutoGen" style="width:39%;border: none;margin-left:2px">Auto Gen</button>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<label>User Name <span class="mendat">*</span></label>
+									<input type="text" id="txtUserName" class=" form-control" autocomplete="off" placeholder="User Name" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<label>Mobile No <span class="mendat">*</span></label>
+									<input type="text" id="txtMobileNo" maxlength="10" data-int class=" form-control" autocomplete="off" placeholder="Mobile No" />
+								</div>
+								<div class="col-md-8 form-group">
+									<label>Designation</label>
+									<div class="flex">
+										<input type="text" id="txtDesignation" class=" form-control" autocomplete="off" placeholder="Designation" />
+										<button class="btn-success bn" onclick="InsertUser()" style="width:39%;border: none;margin-left:2px"><i class="fa fa-sign-in">&nbsp;</i>Submit</button>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<div class="scroll" style="min-height:340px">
+										<table class="table table-bordered" id="tblUserInfo">
+											<thead>
+												<tr>
+													<th style="width:1%">Active</th>
+													<th style="width:22%">User ID</th>
+													<th><input type="text" id="txtSearch" style="color:#000000;width:90%;height:20px" placeholder="Search User" /></th>
+													<th>Mobile No</th>
+													<th style="width:1%">CMD</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					User Info<span id="txtUserInfo"></span>
+					<button class="btn-success pull-right" id="btnSendLink" onclick="SendPwdChange()" style="border: none;margin-left:2px;display:none"><i class="fa fa-sign-in">&nbsp;</i>Send Password Change Link</button>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-12" style="height: 250px;">
+									<label class="master-title">Role Master</label>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="panel panel-info" style="margin: 0;">
+												<span class="list-title">Role List</span>
+												<div class="panel-body" style="height: 211px;overflow:auto">
+													<div class="panel-group" id="AccordionRole" role="tablist" aria-multiselectable="true">
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="panel panel-info" style="margin: 0;">
+												<span class="list-title">Alloted Role List</span>
+												<div class="panel-body" style="height: 211px;overflow:auto">
+													<div class="panel-group" id="AccordionAllotedRole" role="tablist" aria-multiselectable="true">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12" style="height: 260px;margin-top: 15px;">
+									<label class="master-title">Centre Master</label>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="panel panel-info" style="margin: 0;">
+												<span class="list-title">Centre List&nbsp;<button onclick="AllotCentreToUserInBulk()" class="btn-success btn-xs" style="position:absolute;right:10px;border:0">Allot Selected</button></span>
+												<div class="panel-body" style="height: 211px;overflow:auto">
+													<div class="scroll" style="height: 216px;">
+														<table class="table table-bordered" id="tblCentre">
+															<thead>
+																<tr>
+																	<th><input type='checkbox' checked /></th>
+																	<th><input type="text" id="txtSearch1" style="color:#000000;width:90%;height:20px" placeholder="Search Centre" /></th>
+																	<th style="width: 37%;">District Name</th>
+																	<th style="width: 1%;">CMD</th>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="panel panel-info" style="margin: 0;">
+												<span class="list-title"><button onclick="unAllotCentreToUserInBulk()" class="btn-danger btn-xs" style="position:absolute;left:10px;border:0">Delete Selected</button> <p class="text-right" style="margin:0">Alloted Centre List</p></span>
+												<div class="panel-body" style="height: 211px;overflow:auto">
+													<div class="scroll" style="height: 216px;">
+														<table class="table table-bordered" id="tblAllotedCentre">
+															<thead>
+																<tr>
+																	<th><input type='checkbox' /></th>
+																	<th><input type="text" id="txtSearch2" style="color:#000000;width:90%;height:20px" placeholder="Search Centre" /></th>
+																	<th style="width: 37%;">District Name</th>
+																	<th style="width: 1%;">CMD</th>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

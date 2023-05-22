@@ -1,0 +1,153 @@
+﻿
+@{
+	ViewBag.Title = "BillPayment";
+	Layout = "~/Views/Shared/_layout.cshtml";
+}
+
+<style>
+	body {
+		font-family: 'Roboto', sans-serif !important;
+	}
+
+	table {
+		margin: 10px 0 !important;
+	}
+
+	.selectedBill {
+		margin: 0px 10px;		
+		background: antiquewhite;
+		padding: 6px 5px;
+	}
+
+	.UploadSection {
+		background: #fff;
+		border: 1px solid #ddd;
+		padding: 10px;
+	}
+	#btnPay {
+		height: 30px;
+		width: 20%;
+		padding: 0px 10px;
+	}
+	.Inactive{
+		pointer-events:none;
+		opacity:0.5;
+	}
+</style>
+<script src="~/Areas/Invoice/JsModule/BillPayment.js"></script>
+<div class="page-box" style="margin-top:10px;">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					Bill Payment
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>District</label>
+							<select id="ddlDistrict" class="form-control"></select>
+						</div>
+						<div class="col-md-2 form-group">
+							<label>From</label>
+							<input type="date" id="txtFrom" class="form-control" />
+						</div>
+						<div class="col-md-2 form-group">
+							<label>To</label>
+							<input type="date" id="txtTo" class="form-control" />
+						</div>    
+						<div class="col-md-1 form-group">
+							<label style="visibility:hidden">Action</label>
+							<button class="btn-flat btn-success" id="btnSearch" style="background:#45bb13;padding: 4px 20px;" onclick="BillInfo()">Search</button>
+						</div>		
+						<div class="col-md-4 form-group">
+							<input type="text" value="New" id="txtReceiptNo" disabled class="form-control" style="width: 50%;margin: 14px 8px;float: right;" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 form-group">
+							<div class="scroll" style="min-height:440px;border: 1px solid #2492b3;">
+								<table class="table table-bordered" id="tblBillInfo" style="margin: 0px !important;">
+									<thead>
+										<tr>
+											<th>Invoice No.</th>
+											<th>Invoice Type</th>
+											<th style="width:10%" class="text-right">Invoice Amount</th>
+											<th style="width:18%">Invoice Month</th>
+											<th style="width:1%">CMD</th>
+										</tr>
+									</thead>
+									<tbody></tbody>
+								</table>
+							</div>
+						</div>
+						<div class="col-md-6 form-group">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="scroll" style="height:200px;border:1px solid #2492b3">
+										<table class="table table-bordered" id="tblSelectedBillInfo" style="margin: 0px !important;">
+											<thead>
+												<tr>
+													<th>Invoice No.</th>
+													<th class="text-right">Amount</th>
+													<th>Invoice Month</th>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-4">
+									<label>Pay Mode</label>
+									<div class="flex">
+										<select id="ddlpayMode" class="form-control">
+											<option selected>ECS</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<label>Payment Amount</label>  
+									<input type="text" id="txtTotalSelectedAmt" readonly="readonly" class="form-control" placeholder="Payment Amount" />
+								</div>
+								<div class="col-md-4">
+									<label>TDS Amount</label>
+									<input type="text" id="txtTDSAmount" maxlength="10" onkeyup="if (/[^\d.]/g.test(this.value)) this.value = this.value.replace(/[^\d.]/g, '');" class="form-control" placeholder="TDS Amount" />
+								</div>
+							</div>
+							<div class="row" id="payInfo">									
+								<div class="col-md-6">
+									<label>Pay Date</label>
+									<input type="date" id="txtChequeDate" class="form-control" />
+								</div>
+								<div class="col-md-6 form-group">
+									<label>Reference No.</label>
+									<input type="text" id="txtReferenceNo" class="form-control" placeholder="Reference No." />
+								</div>
+								<div class="col-md-8 form-group">
+									@*<label>Remark</label>*@
+									<textarea id="txtRemark" class="form-control" placeholder="Remark"></textarea>
+								</div>
+								<div class="col-md- 4 form-group">
+									<label style="visibility:hidden">Action</label>
+									<button class="btn-flat btn-success pull-right" id="btnSave" style=" margin: 10px;background:#45bb13;padding: 4px 20px;" onclick="ReceivedPayInfo()">Submit</button>
+								</div>
+								@*<div class="col-md-6" style="display:none">
+									<label>Upload Receipt</label>
+									<div class="UploadSection">
+										<input type="file" id="FileUpload" onchange="IsValid(this)" style="display:none" />
+										<button class="btn-flat btn-success" id="btnFileUpload"><i class="fa fa-download">&nbsp;</i>Browse File</button>
+										<label id="txtFileName">Choose File...</label>
+									</div>
+								</div>*@								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

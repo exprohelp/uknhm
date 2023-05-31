@@ -30,6 +30,7 @@ namespace UKNHMApi.Models
 		public string login_id { get; set; }
 		public string Logic { get; set; }
 	}
+
 	public class PatientDetails : ipUnit
 	{				
 		public string PatientName { get; set; }

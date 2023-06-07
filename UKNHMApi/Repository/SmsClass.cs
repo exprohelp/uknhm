@@ -10,10 +10,11 @@ using UKNHMApi.Models;
 using UKNHMApi.Repository.ApplicationResources;
 
 namespace UKNHMApi.Repository
-{
-	public class SmsClass
-	{      
-		public string SendSms(string MobileNoByComaSeperated, string msg)
+{   
+    public class SmsClass
+	{
+        UKNHMApi.Repository.Report.Report report = new UKNHMApi.Repository.Report.Report();
+        public string SendSms(string MobileNoByComaSeperated, string msg)
 		{
 			String responseFromServer = string.Empty;
             string providerName = string.Empty;
@@ -56,7 +57,8 @@ namespace UKNHMApi.Repository
 			catch (Exception ex)
 			{
 				responseFromServer = ex.Message;
-			}
+                InsertErrorLog(MobileNoByComaSeperated, ex.Message, providerName);
+            }
             if (providerName.Contains("NexGen"))
             {
                 NexGenResponse.Root response = JsonConvert.DeserializeObject<NexGenResponse.Root>(responseFromServer);
@@ -67,6 +69,15 @@ namespace UKNHMApi.Repository
             }
             return responseFromServer;
 		}
+        public string InsertErrorLog(string mobileNo, string ErrorMsg, string ErrorType)
+        {
+            ipReport objBO = new ipReport();
+            objBO.MobileNo = mobileNo;
+            objBO.Prm1 = ErrorMsg;
+            objBO.Prm1 = ErrorType;
+            objBO.Logic = "InsertErrorlog";
+           return report.MIS_InsertUpdateReports(objBO);
+        }
         public string SendSmsByTemplateId(string MobileNoByComaSeperated, string msg,string TemplateId)
         {
             String responseFromServer = string.Empty;
@@ -111,7 +122,8 @@ namespace UKNHMApi.Repository
             }
             catch (Exception ex)
             {
-                responseFromServer = "System Response:" + ex.Message;                
+                responseFromServer = "System Response:" + ex.Message;
+                InsertErrorLog(MobileNoByComaSeperated, responseFromServer, providerName+",Template Id : "+TemplateId);
             }
             if (providerName.Contains("NexGen"))
             {
@@ -125,6 +137,7 @@ namespace UKNHMApi.Repository
                 }
                 catch (Exception ex) {
                     responseFromServer = "Next Gen Response:" + responseFromServer;
+                    InsertErrorLog(MobileNoByComaSeperated, responseFromServer, providerName + ",Template Id : " + TemplateId);
                 }
             }
             return responseFromServer;

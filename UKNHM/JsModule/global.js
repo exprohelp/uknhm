@@ -8,6 +8,12 @@
 	//rootUrl: window.location.origin + '/UKNHM'
 };
 $(document).ready(function () {
+    //if (!window.OTPCredential) {
+    //    console.log('Feature Not Available');
+    //}
+    //else {
+    //    console.log('Feature Available');
+    //}
 	inputLimit();
 	onlyInt();
 	loading();

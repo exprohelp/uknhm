@@ -86,7 +86,7 @@ namespace UKNHMApi.Repository
             ipReport objBO = new ipReport();
             objBO.MobileNo = mobileNo;
             objBO.Prm1 = ErrorMsg;
-            objBO.Prm1 = ErrorType;
+            objBO.Prm2 = ErrorType;
             objBO.Logic = "InsertErrorlog";
            return report.MIS_InsertUpdateReports(objBO);
         }

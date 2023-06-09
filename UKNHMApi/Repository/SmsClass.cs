@@ -61,11 +61,23 @@ namespace UKNHMApi.Repository
             }
             if (providerName.Contains("NexGen"))
             {
-                NexGenResponse.Root response = JsonConvert.DeserializeObject<NexGenResponse.Root>(responseFromServer);
-                if (response.messages[0].status.groupName.Contains("PENDING"))
-                    responseFromServer = "Sent";
-                else
-                    responseFromServer = "Failed";                                           
+                try
+                {
+                    NexGenResponse.Root response = JsonConvert.DeserializeObject<NexGenResponse.Root>(responseFromServer);
+                    if (response.messages[0].status.groupName.Contains("PENDING"))
+                        responseFromServer = "Sent";
+                    else
+                    {
+                        responseFromServer = "Next Gen Response:" + responseFromServer;
+                        InsertErrorLog(MobileNoByComaSeperated, responseFromServer, providerName);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    responseFromServer = "Next Gen Response:" + responseFromServer;
+                    InsertErrorLog(MobileNoByComaSeperated, responseFromServer, providerName);
+                }
             }
             return responseFromServer;
 		}
@@ -133,7 +145,11 @@ namespace UKNHMApi.Repository
                     if (response.messages[0].status.groupName.Contains("PENDING"))
                         responseFromServer = "Sent";
                     else
-                        responseFromServer = "Failed";
+                    {
+                        responseFromServer = "Next Gen Response:" + responseFromServer;
+                        InsertErrorLog(MobileNoByComaSeperated, responseFromServer, providerName + ",Template Id : " + TemplateId);            
+                    }
+               
                 }
                 catch (Exception ex) {
                     responseFromServer = "Next Gen Response:" + responseFromServer;
